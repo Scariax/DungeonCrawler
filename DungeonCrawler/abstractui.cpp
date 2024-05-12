@@ -12,5 +12,5 @@ void AbstractUI::draw(Level * level)
 
 Input AbstractUI::move()
 {
-
+    return Input::down;
 }
