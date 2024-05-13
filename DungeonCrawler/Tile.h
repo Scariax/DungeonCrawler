@@ -1,6 +1,5 @@
 #ifndef DUNGEONCRAWLER_TILE_H
 #define DUNGEONCRAWLER_TILE_H
-#include <iostream>
 #include <string>
 #include "Character.h"
 
@@ -20,6 +19,8 @@ public:
     virtual Tile *getDestination();
     void setCharacter(Character *character);
     virtual const std::string getTexture() = 0;
+
+    virtual ~Tile();
 
 
 protected:

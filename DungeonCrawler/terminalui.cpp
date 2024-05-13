@@ -1,4 +1,5 @@
 #include "terminalui.h"
+#include <iostream>
 
 TerminalUI::TerminalUI()
 {

@@ -1,11 +1,7 @@
 #ifndef LEVEL_H
 #define LEVEL_H
-#include <iostream>
 #include <vector>
 #include "Tile.h"
-#include "Wall.h"
-#include "Floor.h"
-#include "Portal.h"
 #include "Character.h"
 #include <string>
 

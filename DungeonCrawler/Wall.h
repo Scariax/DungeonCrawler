@@ -1,6 +1,5 @@
 #ifndef DUNGEONCRAWLER_WALL_H
 #define DUNGEONCRAWLER_WALL_H
-#include <iostream>
 #include "Tile.h"
 #include <string>
 

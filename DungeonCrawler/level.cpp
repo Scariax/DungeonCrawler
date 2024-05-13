@@ -1,4 +1,7 @@
 #include "level.h"
+#include "Wall.h"
+#include "Floor.h"
+#include "Portal.h"
 
 Level::Level(int row, int col, std::string lvl):Rows(row),Columns(col),level_str(lvl)
 {
@@ -51,7 +54,7 @@ Level::Level(int row, int col, std::string lvl):Rows(row),Columns(col),level_str
 
 Level::~Level()
 {
-    for(auto x:Playfield){
+    for(auto& x:Playfield){
         for(auto y:x){
             delete y;
         }

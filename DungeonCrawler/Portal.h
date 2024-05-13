@@ -1,6 +1,5 @@
 #ifndef DUNGEONCRAWLER_PORTAL_H
 #define DUNGEONCRAWLER_PORTAL_H
-#include <iostream>
 #include "Tile.h"
 
 class Portal : public Tile{
