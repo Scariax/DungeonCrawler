@@ -7,7 +7,7 @@ private:
     Portal* destination;
 public:
     Portal(int row, int col, std::string texture);
-    ~Portal();
+    ~Portal() = default;
 
     const std::string getTexture() override;
     Portal *getDestination() override;

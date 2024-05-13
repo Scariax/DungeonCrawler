@@ -19,8 +19,7 @@ public:
     virtual Tile *getDestination();
     void setCharacter(Character *character);
     virtual const std::string getTexture() = 0;
-
-    virtual ~Tile();
+    virtual ~Tile() = default;
 
 
 protected:

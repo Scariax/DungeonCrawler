@@ -8,6 +8,7 @@ public:
     const std::string getTexture() override;
     bool onLeave(Tile *destTile, Character *who);
     std::pair<bool, Tile *> onEnter(Character *who) override;
+    ~Floor() = default;
 };
 
 
