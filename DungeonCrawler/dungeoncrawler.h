@@ -6,11 +6,11 @@
 class DungeonCrawler
 {
 public:
-    DungeonCrawler(TerminalUI* UI, Level* level);
+    DungeonCrawler(TerminalUI* terminal, Level* level);
+    bool turn();
     ~DungeonCrawler();
 
-    bool turn();
-
+private:
     TerminalUI* terminal;
     Level* level;
 };

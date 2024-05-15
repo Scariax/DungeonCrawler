@@ -2,12 +2,13 @@
 #define TERMINALUI_H
 #include "abstractui.h"
 
-class TerminalUI: public AbstractUI
+class TerminalUI : public AbstractUI
 {
 public:
     TerminalUI();
-    void draw(Level* level) override;
+    void draw(Level *) override;
     Input move() override;
+    virtual ~TerminalUI() = default;
 };
 
 #endif // TERMINALUI_H

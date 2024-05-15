@@ -1,13 +1,14 @@
 #ifndef ABSTRACTUI_H
 #define ABSTRACTUI_H
-#include "level.h"
+
+class Level;
 
 enum Input{
     up,
     down,
-    right,
     left,
-    exiting
+    right,
+    terminate
 };
 
 class AbstractUI
@@ -16,6 +17,7 @@ public:
     AbstractUI();
     virtual void draw(Level* level) = 0;
     virtual Input move() = 0;
+    virtual ~AbstractUI() = default;
 };
 
 #endif // ABSTRACTUI_H
