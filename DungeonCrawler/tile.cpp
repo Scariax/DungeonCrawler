@@ -20,11 +20,14 @@ bool Tile::hasCharacter() const
 
 bool Tile::moveTo(Tile *destTile, Character *who)
 {
-    if(this->onLeave(destTile, who))
+    std::pair<bool, Tile*> tempEnter = destTile->onEnter(who);
+    bool tempLeave = this->onLeave(destTile, who);
+
+    if(tempLeave)
     {
-        if(destTile->onEnter(who).first)
+        if(tempEnter.first)
         {
-            if(destTile->onEnter(who).second==nullptr)
+            if(tempEnter.second==nullptr)
             {
                 destTile->setCharacter(who);
                 this->setCharacter(nullptr);
@@ -33,7 +36,7 @@ bool Tile::moveTo(Tile *destTile, Character *who)
             }
             else
             {
-                Tile* por_dest = destTile->onEnter(who).second;
+                Tile* por_dest = tempEnter.second;
                 por_dest->setCharacter(who);
                 this->setCharacter(nullptr);
                 who->setChar_tile(por_dest);

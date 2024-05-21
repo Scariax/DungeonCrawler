@@ -19,7 +19,7 @@ bool DungeonCrawler::turn()
                 terminal->draw(level);
                 Input input_terminal = terminal->move();
 
-                switch(input_terminal){
+                switch(input_terminal){ //todo move unimportant stuff out of switch case
                 case up:
                 {
                     int dest_row = current_tile->getRow()-1;

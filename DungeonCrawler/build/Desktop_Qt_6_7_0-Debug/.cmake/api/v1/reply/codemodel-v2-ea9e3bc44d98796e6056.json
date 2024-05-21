@@ -1,0 +1,61 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-02ce6d4a8b8dd9a1b693.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "New_DungeonCrawler",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "New_DungeonCrawler::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-New_DungeonCrawler-Debug-2d85beec8cfcb978f960.json",
+					"name" : "New_DungeonCrawler",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/build/Desktop_Qt_6_7_0-Debug",
+		"source" : "/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

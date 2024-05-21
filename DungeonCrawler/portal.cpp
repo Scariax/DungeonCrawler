@@ -11,16 +11,6 @@ std::string Portal::getTexture() const
     return Tile::getTexture();
 }
 
-bool Portal::hasCharacter() const
-{
-    return Tile::hasCharacter();
-}
-
-bool Portal::moveTo(Tile *destTile, Character *who)
-{
-    return Tile::moveTo(destTile, who);
-}
-
 bool Portal::onLeave(Tile *destTile, Character *who)
 {
     return true;
@@ -39,14 +29,4 @@ Portal *Portal::getDestination() const
 void Portal::setDestination(Portal *newDestination)
 {
     destination = newDestination;
-}
-
-Character *Portal::getCharacter() const
-{
-    return Tile::getCharacter();
-}
-
-void Portal::setCharacter(Character *newCharacter)
-{
-    Tile::setCharacter(newCharacter);
 }

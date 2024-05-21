@@ -20,23 +20,3 @@ std::pair<bool, Tile *> Floor::onEnter(Character *who)
 {
     return {true, nullptr};
 }
-
-Character *Floor::getCharacter() const
-{
-    return Tile::getCharacter();
-}
-
-void Floor::setCharacter(Character *newCharacter)
-{
-    Tile::setCharacter(newCharacter);
-}
-
-bool Floor::moveTo(Tile *destTile, Character *who)
-{
-    return Tile::moveTo(destTile, who);
-}
-
-bool Floor::hasCharacter() const
-{
-    return Tile::hasCharacter();
-}
