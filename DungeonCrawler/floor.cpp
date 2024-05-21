@@ -13,6 +13,9 @@ std::string Floor::getTexture() const
 
 bool Floor::onLeave(Tile *destTile, Character *who)
 {
+    if( destTile->getTexture()== "_" ){
+        return false;
+    }
     return true;
 }
 

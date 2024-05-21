@@ -2,12 +2,21 @@
 #include "portal.h"
 #include "wall.h"
 #include "floor.h"
+#include "switch.h"
+#include "door.h"
+#include "pit.h"
+#include "ramp.h"
 
 Level::Level(int row, int col, std::string lvl):rows(row), cols(col), lvl_string(lvl) {
     int index = 0;
     Portal* portal1 = nullptr;
     Portal* portal2 = nullptr;
+
+    Door* door1;
+    Switch* switch1;
+
     bool portal1_found = false;
+    bool door1_found = false;
 
     field.resize(rows);
     for(int i = 0; i < rows; ++i){
@@ -44,6 +53,26 @@ Level::Level(int row, int col, std::string lvl):rows(row), cols(col), lvl_string
                 }
                 index++;
                 break;
+            case '?':
+                switch1 = new Switch(i, j, "?");
+                field.at(i).at(j) = switch1;
+                index++;
+                break;
+
+            case '-':
+                door1 = new Door(i, j, "-");
+                field.at(i).at(j) = door1;
+                door1_found=true;
+                index++;
+                break;
+            case '_':
+                field.at(i).at(j) = new Pit(i, j, "_");
+                index++;
+                break;
+            case '<':
+                field.at(i).at(j) = new Ramp(i, j, "<");
+                index++;
+                break;
 
             case 'X':
                 field.at(i).at(j) = new Floor(i, j, ".");
@@ -55,6 +84,9 @@ Level::Level(int row, int col, std::string lvl):rows(row), cols(col), lvl_string
                 break;
             }
         }
+    }
+    if(door1_found){
+        switch1->attach(door1);
     }
 }
 
