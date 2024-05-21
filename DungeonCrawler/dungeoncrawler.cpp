@@ -18,11 +18,13 @@ bool DungeonCrawler::turn()
             while(notMoved){
                 terminal->draw(level);
                 Input input_terminal = terminal->move();
+                int dest_row = current_tile->getRow();
+                int dest_col = current_tile->getCol();
 
                 switch(input_terminal){ //todo move unimportant stuff out of switch case
                 case up:
                 {
-                    int dest_row = current_tile->getRow()-1;
+                    dest_row-=1;
                     int dest_col = current_tile->getCol();
                     Tile* dest_tile = level->getTile(dest_row, dest_col);
                     if(current_tile->moveTo(dest_tile, character)){
@@ -32,8 +34,7 @@ bool DungeonCrawler::turn()
                 }
                 case down:
                 {
-                    int dest_row = current_tile->getRow()+1;
-                    int dest_col = current_tile->getCol();
+                    dest_row+=1;
                     Tile* dest_tile = level->getTile(dest_row, dest_col);
                     if(current_tile->moveTo(dest_tile, character)){
                         notMoved = false;
@@ -42,8 +43,7 @@ bool DungeonCrawler::turn()
                 }
                 case right:
                 {
-                    int dest_row = current_tile->getRow();
-                    int dest_col = current_tile->getCol()+1;
+                    dest_col+=1;
                     Tile* dest_tile = level->getTile(dest_row, dest_col);
                     if(current_tile->moveTo(dest_tile, character)){
                         notMoved = false;
@@ -52,8 +52,7 @@ bool DungeonCrawler::turn()
                 }
                 case left:
                 {
-                    int dest_row = current_tile->getRow();
-                    int dest_col = current_tile->getCol()-1;
+                    dest_col-=1;
                     Tile* dest_tile = level->getTile(dest_row, dest_col);
                     if(current_tile->moveTo(dest_tile, character)){
                         notMoved = false;
@@ -63,7 +62,6 @@ bool DungeonCrawler::turn()
                 case terminate:
                 {
                     return false;
-                    break;
                 }
                 default:
                 {
