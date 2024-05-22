@@ -1,7 +1,7 @@
 #include "character.h"
-#include "abstractui.h"
+#include "abstractview.h"
 
-Character::Character(std::string texture):texture(texture), char_tile(nullptr), abstrUI(nullptr) {}
+Character::Character(std::string texture):texture(texture), char_tile(nullptr), abstrCon(nullptr) {}
 
 std::string Character::getTexture() const
 {
@@ -10,7 +10,7 @@ std::string Character::getTexture() const
 
 Input Character::move()
 {
-    return abstrUI->move();
+    return abstrCon->move();
 }
 
 Tile *Character::getChar_tile() const

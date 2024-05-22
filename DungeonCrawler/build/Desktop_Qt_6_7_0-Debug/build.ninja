@@ -49,14 +49,12 @@ cmake_ninja_workdir = /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonC
 
 build cmake_object_order_depends_target_Dungeoncrawler: phony || CMakeFiles/Dungeoncrawler.dir
 
-build CMakeFiles/Dungeoncrawler.dir/abstractui.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/abstractui.cpp || cmake_object_order_depends_target_Dungeoncrawler
-  DEP_FILE = CMakeFiles/Dungeoncrawler.dir/abstractui.cpp.o.d
+build CMakeFiles/Dungeoncrawler.dir/abstractview.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/abstractview.cpp || cmake_object_order_depends_target_Dungeoncrawler
+  DEP_FILE = CMakeFiles/Dungeoncrawler.dir/abstractview.cpp.o.d
   FLAGS = -DQT_QML_DEBUG -g -std=gnu++14 -fdiagnostics-color=always
   INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
-  TARGET_PDB = Dungeoncrawler.pdb
 
 build CMakeFiles/Dungeoncrawler.dir/active.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/active.cpp || cmake_object_order_depends_target_Dungeoncrawler
   DEP_FILE = CMakeFiles/Dungeoncrawler.dir/active.cpp.o.d
@@ -64,8 +62,6 @@ build CMakeFiles/Dungeoncrawler.dir/active.cpp.o: CXX_COMPILER__Dungeoncrawler_u
   INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
-  TARGET_PDB = Dungeoncrawler.pdb
 
 build CMakeFiles/Dungeoncrawler.dir/character.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/character.cpp || cmake_object_order_depends_target_Dungeoncrawler
   DEP_FILE = CMakeFiles/Dungeoncrawler.dir/character.cpp.o.d
@@ -73,8 +69,6 @@ build CMakeFiles/Dungeoncrawler.dir/character.cpp.o: CXX_COMPILER__Dungeoncrawle
   INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
-  TARGET_PDB = Dungeoncrawler.pdb
 
 build CMakeFiles/Dungeoncrawler.dir/dungeoncrawler.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/dungeoncrawler.cpp || cmake_object_order_depends_target_Dungeoncrawler
   DEP_FILE = CMakeFiles/Dungeoncrawler.dir/dungeoncrawler.cpp.o.d
@@ -82,8 +76,6 @@ build CMakeFiles/Dungeoncrawler.dir/dungeoncrawler.cpp.o: CXX_COMPILER__Dungeonc
   INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
-  TARGET_PDB = Dungeoncrawler.pdb
 
 build CMakeFiles/Dungeoncrawler.dir/floor.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/floor.cpp || cmake_object_order_depends_target_Dungeoncrawler
   DEP_FILE = CMakeFiles/Dungeoncrawler.dir/floor.cpp.o.d
@@ -91,8 +83,6 @@ build CMakeFiles/Dungeoncrawler.dir/floor.cpp.o: CXX_COMPILER__Dungeoncrawler_un
   INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
-  TARGET_PDB = Dungeoncrawler.pdb
 
 build CMakeFiles/Dungeoncrawler.dir/level.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/level.cpp || cmake_object_order_depends_target_Dungeoncrawler
   DEP_FILE = CMakeFiles/Dungeoncrawler.dir/level.cpp.o.d
@@ -100,8 +90,6 @@ build CMakeFiles/Dungeoncrawler.dir/level.cpp.o: CXX_COMPILER__Dungeoncrawler_un
   INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
-  TARGET_PDB = Dungeoncrawler.pdb
 
 build CMakeFiles/Dungeoncrawler.dir/main.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/main.cpp || cmake_object_order_depends_target_Dungeoncrawler
   DEP_FILE = CMakeFiles/Dungeoncrawler.dir/main.cpp.o.d
@@ -109,8 +97,6 @@ build CMakeFiles/Dungeoncrawler.dir/main.cpp.o: CXX_COMPILER__Dungeoncrawler_uns
   INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
-  TARGET_PDB = Dungeoncrawler.pdb
 
 build CMakeFiles/Dungeoncrawler.dir/passive.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/passive.cpp || cmake_object_order_depends_target_Dungeoncrawler
   DEP_FILE = CMakeFiles/Dungeoncrawler.dir/passive.cpp.o.d
@@ -118,8 +104,6 @@ build CMakeFiles/Dungeoncrawler.dir/passive.cpp.o: CXX_COMPILER__Dungeoncrawler_
   INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
-  TARGET_PDB = Dungeoncrawler.pdb
 
 build CMakeFiles/Dungeoncrawler.dir/portal.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/portal.cpp || cmake_object_order_depends_target_Dungeoncrawler
   DEP_FILE = CMakeFiles/Dungeoncrawler.dir/portal.cpp.o.d
@@ -127,8 +111,6 @@ build CMakeFiles/Dungeoncrawler.dir/portal.cpp.o: CXX_COMPILER__Dungeoncrawler_u
   INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
-  TARGET_PDB = Dungeoncrawler.pdb
 
 build CMakeFiles/Dungeoncrawler.dir/terminalui.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/terminalui.cpp || cmake_object_order_depends_target_Dungeoncrawler
   DEP_FILE = CMakeFiles/Dungeoncrawler.dir/terminalui.cpp.o.d
@@ -136,8 +118,6 @@ build CMakeFiles/Dungeoncrawler.dir/terminalui.cpp.o: CXX_COMPILER__Dungeoncrawl
   INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
-  TARGET_PDB = Dungeoncrawler.pdb
 
 build CMakeFiles/Dungeoncrawler.dir/tile.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/tile.cpp || cmake_object_order_depends_target_Dungeoncrawler
   DEP_FILE = CMakeFiles/Dungeoncrawler.dir/tile.cpp.o.d
@@ -145,8 +125,6 @@ build CMakeFiles/Dungeoncrawler.dir/tile.cpp.o: CXX_COMPILER__Dungeoncrawler_uns
   INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
-  TARGET_PDB = Dungeoncrawler.pdb
 
 build CMakeFiles/Dungeoncrawler.dir/wall.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/wall.cpp || cmake_object_order_depends_target_Dungeoncrawler
   DEP_FILE = CMakeFiles/Dungeoncrawler.dir/wall.cpp.o.d
@@ -154,8 +132,6 @@ build CMakeFiles/Dungeoncrawler.dir/wall.cpp.o: CXX_COMPILER__Dungeoncrawler_uns
   INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
-  TARGET_PDB = Dungeoncrawler.pdb
 
 build CMakeFiles/Dungeoncrawler.dir/switch.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/switch.cpp || cmake_object_order_depends_target_Dungeoncrawler
   DEP_FILE = CMakeFiles/Dungeoncrawler.dir/switch.cpp.o.d
@@ -163,8 +139,6 @@ build CMakeFiles/Dungeoncrawler.dir/switch.cpp.o: CXX_COMPILER__Dungeoncrawler_u
   INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
-  TARGET_PDB = Dungeoncrawler.pdb
 
 build CMakeFiles/Dungeoncrawler.dir/door.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/door.cpp || cmake_object_order_depends_target_Dungeoncrawler
   DEP_FILE = CMakeFiles/Dungeoncrawler.dir/door.cpp.o.d
@@ -172,8 +146,6 @@ build CMakeFiles/Dungeoncrawler.dir/door.cpp.o: CXX_COMPILER__Dungeoncrawler_uns
   INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
-  TARGET_PDB = Dungeoncrawler.pdb
 
 build CMakeFiles/Dungeoncrawler.dir/pit.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/pit.cpp || cmake_object_order_depends_target_Dungeoncrawler
   DEP_FILE = CMakeFiles/Dungeoncrawler.dir/pit.cpp.o.d
@@ -181,8 +153,6 @@ build CMakeFiles/Dungeoncrawler.dir/pit.cpp.o: CXX_COMPILER__Dungeoncrawler_unsc
   INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
-  TARGET_PDB = Dungeoncrawler.pdb
 
 build CMakeFiles/Dungeoncrawler.dir/ramp.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/ramp.cpp || cmake_object_order_depends_target_Dungeoncrawler
   DEP_FILE = CMakeFiles/Dungeoncrawler.dir/ramp.cpp.o.d
@@ -190,8 +160,13 @@ build CMakeFiles/Dungeoncrawler.dir/ramp.cpp.o: CXX_COMPILER__Dungeoncrawler_uns
   INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
-  TARGET_PDB = Dungeoncrawler.pdb
+
+build CMakeFiles/Dungeoncrawler.dir/abstractcontroller.cpp.o: CXX_COMPILER__Dungeoncrawler_unscanned_Debug /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/abstractcontroller.cpp || cmake_object_order_depends_target_Dungeoncrawler
+  DEP_FILE = CMakeFiles/Dungeoncrawler.dir/abstractcontroller.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I/home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/.
+  OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
+  OBJECT_FILE_DIR = CMakeFiles/Dungeoncrawler.dir
 
 
 # =============================================================================
@@ -201,14 +176,13 @@ build CMakeFiles/Dungeoncrawler.dir/ramp.cpp.o: CXX_COMPILER__Dungeoncrawler_uns
 #############################################
 # Link the executable Dungeoncrawler
 
-build Dungeoncrawler: CXX_EXECUTABLE_LINKER__Dungeoncrawler_Debug CMakeFiles/Dungeoncrawler.dir/abstractui.cpp.o CMakeFiles/Dungeoncrawler.dir/active.cpp.o CMakeFiles/Dungeoncrawler.dir/character.cpp.o CMakeFiles/Dungeoncrawler.dir/dungeoncrawler.cpp.o CMakeFiles/Dungeoncrawler.dir/floor.cpp.o CMakeFiles/Dungeoncrawler.dir/level.cpp.o CMakeFiles/Dungeoncrawler.dir/main.cpp.o CMakeFiles/Dungeoncrawler.dir/passive.cpp.o CMakeFiles/Dungeoncrawler.dir/portal.cpp.o CMakeFiles/Dungeoncrawler.dir/terminalui.cpp.o CMakeFiles/Dungeoncrawler.dir/tile.cpp.o CMakeFiles/Dungeoncrawler.dir/wall.cpp.o CMakeFiles/Dungeoncrawler.dir/switch.cpp.o CMakeFiles/Dungeoncrawler.dir/door.cpp.o CMakeFiles/Dungeoncrawler.dir/pit.cpp.o CMakeFiles/Dungeoncrawler.dir/ramp.cpp.o
+build Dungeoncrawler: CXX_EXECUTABLE_LINKER__Dungeoncrawler_Debug CMakeFiles/Dungeoncrawler.dir/abstractview.cpp.o CMakeFiles/Dungeoncrawler.dir/active.cpp.o CMakeFiles/Dungeoncrawler.dir/character.cpp.o CMakeFiles/Dungeoncrawler.dir/dungeoncrawler.cpp.o CMakeFiles/Dungeoncrawler.dir/floor.cpp.o CMakeFiles/Dungeoncrawler.dir/level.cpp.o CMakeFiles/Dungeoncrawler.dir/main.cpp.o CMakeFiles/Dungeoncrawler.dir/passive.cpp.o CMakeFiles/Dungeoncrawler.dir/portal.cpp.o CMakeFiles/Dungeoncrawler.dir/terminalui.cpp.o CMakeFiles/Dungeoncrawler.dir/tile.cpp.o CMakeFiles/Dungeoncrawler.dir/wall.cpp.o CMakeFiles/Dungeoncrawler.dir/switch.cpp.o CMakeFiles/Dungeoncrawler.dir/door.cpp.o CMakeFiles/Dungeoncrawler.dir/pit.cpp.o CMakeFiles/Dungeoncrawler.dir/ramp.cpp.o CMakeFiles/Dungeoncrawler.dir/abstractcontroller.cpp.o
   FLAGS = -DQT_QML_DEBUG -g
   OBJECT_DIR = CMakeFiles/Dungeoncrawler.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/Dungeoncrawler.dir/
   TARGET_FILE = Dungeoncrawler
-  TARGET_PDB = Dungeoncrawler.pdb
+  TARGET_PDB = Dungeoncrawler.dbg
 
 
 #############################################
@@ -254,14 +228,14 @@ build all: phony Dungeoncrawler
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | .qtc/package-manager/auto-setup.cmake /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/CMakeLists.txt /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCCompiler.cmake.in /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCCompilerABI.c /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCInformation.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCXXCompiler.cmake.in /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCompilerIdDetection.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeDetermineCCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeDetermineCXXCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeDetermineCompileFeatures.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeDetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeDetermineSystem.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeFindBinUtils.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeNinjaFindMake.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeParseImplicitIncludeInfo.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeParseImplicitLinkInfo.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeParseLibraryArchitecture.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeSystem.cmake.in /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeTestCXXCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeTestCompilerCommon.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/ADSP-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/ARMCC-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/ARMClang-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/AppleClang-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Borland-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Clang-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Cray-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GHS-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU-FindBinUtils.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/HP-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/IAR-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Intel-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/LCC-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/MSVC-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/NVHPC-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/PGI-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/PathScale-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/SCO-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/TI-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Tasking-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Watcom-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/XL-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/zOS-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Internal/FeatureTesting.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-Determine-CXX.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.27.7/CMakeCCompiler.cmake CMakeFiles/3.27.7/CMakeCXXCompiler.cmake CMakeFiles/3.27.7/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | .qtc/package-manager/auto-setup.cmake /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/CMakeLists.txt /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCInformation.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.27.7/CMakeCCompiler.cmake CMakeFiles/3.27.7/CMakeCXXCompiler.cmake CMakeFiles/3.27.7/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build .qtc/package-manager/auto-setup.cmake /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/CMakeLists.txt /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCCompiler.cmake.in /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCCompilerABI.c /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCInformation.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCXXCompiler.cmake.in /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCompilerIdDetection.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeDetermineCCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeDetermineCXXCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeDetermineCompileFeatures.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeDetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeDetermineSystem.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeFindBinUtils.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeNinjaFindMake.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeParseImplicitIncludeInfo.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeParseImplicitLinkInfo.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeParseLibraryArchitecture.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeSystem.cmake.in /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeTestCXXCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeTestCompilerCommon.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/ADSP-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/ARMCC-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/ARMClang-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/AppleClang-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Borland-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Clang-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Cray-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GHS-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU-FindBinUtils.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/HP-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/IAR-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Intel-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/LCC-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/MSVC-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/NVHPC-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/PGI-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/PathScale-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/SCO-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/TI-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Tasking-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Watcom-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/XL-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/zOS-C-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Internal/FeatureTesting.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-Determine-CXX.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.27.7/CMakeCCompiler.cmake CMakeFiles/3.27.7/CMakeCXXCompiler.cmake CMakeFiles/3.27.7/CMakeSystem.cmake: phony
+build .qtc/package-manager/auto-setup.cmake /home/pizzacom/PG2/DungeonCrawler_git/Fr34xF-Hase/DungeonCrawler/CMakeLists.txt /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCInformation.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux.cmake /home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.27.7/CMakeCCompiler.cmake CMakeFiles/3.27.7/CMakeCXXCompiler.cmake CMakeFiles/3.27.7/CMakeSystem.cmake: phony
 
 
 #############################################

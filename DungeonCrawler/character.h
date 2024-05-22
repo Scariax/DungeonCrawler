@@ -1,7 +1,7 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 #include <string>
-#include "abstractui.h"
+#include "abstractcontroller.h"
 
 class Tile;
 
@@ -23,7 +23,7 @@ public:
 private:
     std::string texture;
     Tile* char_tile;
-    AbstractUI* abstrUI;
+    AbstractController* abstrCon;
 };
 
 #endif // CHARACTER_H

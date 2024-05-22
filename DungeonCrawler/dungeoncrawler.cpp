@@ -1,8 +1,6 @@
 #include "dungeoncrawler.h"
 
-DungeonCrawler::DungeonCrawler(TerminalUI *terminal, Level *level):terminal(terminal), level(level) {
-
-}
+DungeonCrawler::DungeonCrawler(TerminalUI *terminal, Level *level):terminal(terminal), level(level) {}
 
 DungeonCrawler::~DungeonCrawler(){
     delete terminal;

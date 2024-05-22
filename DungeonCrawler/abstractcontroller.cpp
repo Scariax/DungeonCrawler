@@ -1,15 +1,9 @@
-#include "abstractui.h"
-#include "level.h"
+#include "abstractcontroller.h"
 #include <iostream>
 
-AbstractUI::AbstractUI() {}
+AbstractController::AbstractController() {}
 
-void AbstractUI::draw(Level *)
-{
-
-}
-
-Input AbstractUI::move()
+Input AbstractController::move()
 {
     while(true){
         std::cout << "Your turn to move(up - w, down - s, right - d, left - a, exit - x" << std::endl;

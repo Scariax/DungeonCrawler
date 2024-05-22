@@ -6,8 +6,8 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(Dungeoncrawler
-        abstractui.cpp
-        abstractui.h
+    abstractview.cpp
+        abstractview.h
         active.cpp
         active.h
         character.cpp
@@ -32,4 +32,5 @@ add_executable(Dungeoncrawler
         switch.h switch.cpp
         door.h door.cpp
         pit.h pit.cpp
-        ramp.h ramp.cpp)
+        ramp.h ramp.cpp
+        abstractcontroller.h abstractcontroller.cpp)

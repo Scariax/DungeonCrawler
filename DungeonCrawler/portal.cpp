@@ -13,9 +13,6 @@ std::string Portal::getTexture() const
 
 bool Portal::onLeave(Tile *destTile, Character *who)
 {
-    if( destTile->getTexture()=="_" ){
-        return false;
-    }
     return true;
 }
 

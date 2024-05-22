@@ -156,12 +156,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "abstractui.cpp",
+			"path" : "abstractview.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "abstractui.h",
+			"path" : "abstractview.h",
 			"sourceGroupIndex" : 1
 		},
 		{

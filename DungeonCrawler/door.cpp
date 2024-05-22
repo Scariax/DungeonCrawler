@@ -20,9 +20,6 @@ std::string Door::getTexture() const
 
 bool Door::onLeave(Tile *destTile, Character *who)
 {
-    if(destTile->getTexture()=="_"){
-        return false;
-    }
     return true;
 }
 
