@@ -23,4 +23,5 @@ int main()
     auto dungeon = new DungeonCrawler(UI, level);
     while(dungeon->turn()){}
     delete dungeon;
+    return 0;
 }

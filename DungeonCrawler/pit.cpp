@@ -15,7 +15,7 @@ std::string Pit::getTexture() const
 
 bool Pit::onLeave(Tile *destTile, Character *who)
 {
-    if( destTile->getTexture()=="_" || destTile->getTexture()== "<" ){
+    if(destTile->getTexture()=="_" || destTile->getTexture()== "<"){
         return true;
     }
     return false;

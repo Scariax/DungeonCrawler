@@ -21,7 +21,7 @@ bool DungeonCrawler::turn()
                 int dest_row = current_tile->getRow();
                 int dest_col = current_tile->getCol();
 
-                switch(input_terminal){ //todo move unimportant stuff out of switch case
+                switch(input_terminal){
                 case up:
                 {
                     dest_row-=1;

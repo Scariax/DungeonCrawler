@@ -5,37 +5,33 @@ Active::Active()
 
 }
 
-Active::~Active()
-{
+/*Active::~Active(){ //when using it like this, it creates a pointer error -> valgrind has 0 errors detected when not using this
+    if(list_of_Passive.size()<=0){
+        return;
+    }
     for(auto x:list_of_Passive){
         delete x;
     }
-}
+    list_of_Passive.clear();
+}*/
 
 void Active::attach(Passive* p)
 {
-    bool p_found=false;
     for(auto passive: list_of_Passive){
         if(passive==p){
-            p_found=true;
-            break;
+            return;
         }
     }
-    if(!p_found){
-        list_of_Passive.push_back(p);
-    }
+    list_of_Passive.push_back(p);
 }
 
 void Active::detach(Passive* p)
 {
-    std::vector<Passive*> new_list;
-    for(auto passive: list_of_Passive){
-        if(passive==p){
-            continue;
+    for(int i = 0; i < list_of_Passive.size(); i++){
+        if(list_of_Passive[i] == p){
+            list_of_Passive.erase(list_of_Passive.begin()+i);
         }
-        new_list.push_back(passive);
     }
-    list_of_Passive = new_list;
 }
 
 void Active::activate()

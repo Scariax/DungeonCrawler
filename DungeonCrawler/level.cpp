@@ -17,6 +17,7 @@ Level::Level(int row, int col, std::string lvl):rows(row), cols(col), lvl_string
 
     bool portal1_found = false;
     bool door1_found = false;
+    bool switch1_found = false;
 
     field.resize(rows);
     for(int i = 0; i < rows; ++i){
@@ -53,22 +54,26 @@ Level::Level(int row, int col, std::string lvl):rows(row), cols(col), lvl_string
                 }
                 index++;
                 break;
+
             case '?':
                 switch1 = new Switch(i, j, "?");
                 field.at(i).at(j) = switch1;
                 index++;
+                switch1_found = true;
                 break;
 
             case '-':
                 door1 = new Door(i, j, "-");
                 field.at(i).at(j) = door1;
-                door1_found=true;
+                door1_found = true;
                 index++;
                 break;
+
             case '_':
                 field.at(i).at(j) = new Pit(i, j, "_");
                 index++;
                 break;
+
             case '<':
                 field.at(i).at(j) = new Ramp(i, j, "<");
                 index++;
@@ -85,7 +90,7 @@ Level::Level(int row, int col, std::string lvl):rows(row), cols(col), lvl_string
             }
         }
     }
-    if(door1_found){
+    if(door1_found && switch1_found){
         switch1->attach(door1);
     }
 }
