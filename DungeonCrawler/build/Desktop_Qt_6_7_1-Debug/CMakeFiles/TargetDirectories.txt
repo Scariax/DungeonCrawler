@@ -1,3 +1,0 @@
-/home/pizzacom/PG2/Fr34xF-Hase/DungeonCrawler/build/Desktop_Qt_6_7_1-Debug/CMakeFiles/Dungeoncrawler.dir
-/home/pizzacom/PG2/Fr34xF-Hase/DungeonCrawler/build/Desktop_Qt_6_7_1-Debug/CMakeFiles/edit_cache.dir
-/home/pizzacom/PG2/Fr34xF-Hase/DungeonCrawler/build/Desktop_Qt_6_7_1-Debug/CMakeFiles/rebuild_cache.dir
