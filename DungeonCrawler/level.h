@@ -9,6 +9,7 @@ class Level
 public:
     Level(int row, int col, std::string lvl);
     ~Level();
+    Level(const Level& l);
     Tile *getTile(int row, int col);
     const Tile *getTile(int row, int col) const;
     void placeCharacter(Character *c, int row, int col);
@@ -16,6 +17,8 @@ public:
     int getCols() const;
 
     std::vector<Character *> getCharacters() const;
+
+    std::string getLvl_string() const;
 
 private:
     std::vector<std::vector<Tile*>> field;

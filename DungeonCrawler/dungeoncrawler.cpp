@@ -1,6 +1,30 @@
 #include "dungeoncrawler.h"
+#include "level.h"
+#include <iostream>
 
-DungeonCrawler::DungeonCrawler(TerminalUI *terminal, Level *level):terminal(terminal), level(level) {}
+DungeonCrawler::DungeonCrawler(TerminalUI *terminal, Level *level):terminal(terminal), level(level) {
+    //Test copy constructor
+    std::cout << "testing copyconstructor" << std::endl << std::endl;
+    auto* tmp = new Level(2,5,"##########");
+    terminal->draw(tmp);
+    std::cout << "Created Tmp" << std::endl << std::endl;
+    auto* currentLevel = new Level(*tmp);
+    terminal->draw(currentLevel);
+    std::cout << "copyconst called created new level" << std::endl << std::endl;
+    delete tmp;
+    std::cout << "deleted tmp" << std::endl << std::endl;
+
+
+    //Test assignment
+    tmp = new Level(2,5,"##X#######");
+    terminal->draw(tmp);
+    std::cout << "created new tmp value" << std::endl << std::endl;
+    *currentLevel = *tmp;
+    terminal->draw(currentLevel);
+    std::cout << "called assignment operator" << std::endl << std::endl;
+    delete tmp;
+    std::cout << "cleaned everything up" << std::endl << std::endl;
+}
 
 DungeonCrawler::~DungeonCrawler(){
     delete terminal;
