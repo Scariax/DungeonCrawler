@@ -130,10 +130,14 @@ Level::Level(const Level &l):rows(l.getRows()), cols(l.getCols()), lvl_string(l.
 
     for(int i = 0; i < rows; i++){
         for(int j = 0; j < cols; j++){
-            if(typeid(*l.getTile(i,j)) == typeid(Wall)){
+            auto obj = l.getTile(i, j);
+            const std::type_info& tile_tmp = typeid(*obj);
+            if(tile_tmp == typeid(Wall)){
                 field.at(i).at(j) = new Wall(i, j, "#");
+                continue;
             }
-            else if(typeid(*l.getTile(i,j)) == typeid(Floor)){
+
+            if(tile_tmp == typeid(Floor)){
                 field.at(i).at(j) = new Floor(i, j, ".");
                 if(l.getField().at(i).at(j)->hasCharacter()){
                     Character* new_char = new Character("X");
@@ -141,8 +145,10 @@ Level::Level(const Level &l):rows(l.getRows()), cols(l.getCols()), lvl_string(l.
                     field.at(i).at(j)->setCharacter(new_char);
                     new_char->setChar_tile(field.at(i).at(j));
                 }
+                continue;
             }
-            else if(typeid(*l.getTile(i,j)) == typeid(Portal)){
+
+            if(tile_tmp == typeid(Portal)){
                 if(portal1_found)
                 {
                     portal2 = new Portal(i, j, "O");
@@ -157,22 +163,31 @@ Level::Level(const Level &l):rows(l.getRows()), cols(l.getCols()), lvl_string(l.
                     field.at(i).at(j) = portal1;
                     portal1_found = true;
                 }
+                continue;
             }
-            else if(typeid(*l.getTile(i,j)) == typeid(Switch)){
+
+            if(tile_tmp == typeid(Switch)){
                 switch1 = new Switch(i, j, "?");
                 field.at(i).at(j) = switch1;
                 switch1_found = true;
+                continue;
             }
-            else if(typeid(*l.getTile(i,j)) == typeid(Door)){
+
+            if(tile_tmp == typeid(Door)){
                 door1 = new Door(i, j, "-");
                 field.at(i).at(j) = door1;
                 door1_found = true;
+                continue;
             }
-            else if(typeid(*l.getTile(i,j)) == typeid(Door)){
+
+            if(tile_tmp == typeid(Door)){
                 field.at(i).at(j) = new Pit(i, j, "_");
+                continue;
             }
-            else if(typeid(*l.getTile(i,j)) == typeid(Door)){
+
+            if(tile_tmp == typeid(Door)){
                 field.at(i).at(j) = new Ramp(i, j, "<");
+                continue;
             }
         }
     }
