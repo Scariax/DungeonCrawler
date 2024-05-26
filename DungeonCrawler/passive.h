@@ -6,7 +6,7 @@ class Passive
 {
 public:
     Passive();
-    virtual void notify();
+    virtual void notify() = 0;
 };
 
 #endif // PASSIVE_H

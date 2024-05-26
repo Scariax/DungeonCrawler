@@ -9,6 +9,7 @@ public:
     TerminalUI();
     void draw(Level *) override;
     virtual ~TerminalUI() = default;
+    Input move() override;
 };
 
 #endif // TERMINALUI_H

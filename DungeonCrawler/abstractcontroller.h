@@ -13,7 +13,7 @@ class AbstractController
 {
 public:
     AbstractController();
-    Input move();
+    virtual Input move() = 0;
 };
 
 #endif // ABSTRACTCONTROLLER_H

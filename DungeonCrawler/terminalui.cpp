@@ -24,3 +24,8 @@ void TerminalUI::draw(Level* level){
         std::cout << std::endl;
     }
 }
+
+Input TerminalUI::move()
+{
+    return AbstractController::move();
+}
