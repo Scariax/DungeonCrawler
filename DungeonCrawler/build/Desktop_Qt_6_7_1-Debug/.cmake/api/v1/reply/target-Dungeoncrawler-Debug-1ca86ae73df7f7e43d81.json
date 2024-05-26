@@ -42,7 +42,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-DQT_QML_DEBUG -g -std=gnu++14 -fcolor-diagnostics"
+					"fragment" : "-DQT_QML_DEBUG -g -std=gnu++14 -fdiagnostics-color=always"
 				}
 			],
 			"includes" : 

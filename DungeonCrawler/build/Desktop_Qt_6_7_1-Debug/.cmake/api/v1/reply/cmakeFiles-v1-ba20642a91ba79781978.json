@@ -519,7 +519,7 @@
 		{
 			"isCMake" : true,
 			"isExternal" : true,
-			"path" : "/home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Clang-FindBinUtils.cmake"
+			"path" : "/home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU-FindBinUtils.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -682,17 +682,12 @@
 		{
 			"isCMake" : true,
 			"isExternal" : true,
-			"path" : "/home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Clang-CXX.cmake"
+			"path" : "/home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake"
 		},
 		{
 			"isCMake" : true,
 			"isExternal" : true,
-			"path" : "/home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/Clang.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Platform/Linux-Clang-CXX.cmake"
+			"path" : "/home/pizzacom/Qt/Tools/CMake/share/cmake-3.27/Modules/Compiler/GNU.cmake"
 		},
 		{
 			"isCMake" : true,

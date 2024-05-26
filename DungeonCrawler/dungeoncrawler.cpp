@@ -16,7 +16,7 @@ DungeonCrawler::DungeonCrawler(TerminalUI *terminal, Level *level):terminal(term
 
 
     //Test assignment
-    tmp = new Level(2,5,"##X#######");
+    tmp = new Level(3,5,"##X###########X");
     terminal->draw(tmp);
     std::cout << "created new tmp value" << std::endl << std::endl;
     *currentLevel = *tmp;

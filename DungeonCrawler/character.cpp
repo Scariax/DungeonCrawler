@@ -1,5 +1,4 @@
 #include "character.h"
-#include "abstractview.h"
 
 Character::Character(std::string texture):texture(texture), char_tile(nullptr), abstrCon(nullptr) {}
 

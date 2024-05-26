@@ -180,12 +180,12 @@ Level::Level(const Level &l):rows(l.getRows()), cols(l.getCols()), lvl_string(l.
                 continue;
             }
 
-            if(tile_tmp == typeid(Door)){
+            if(tile_tmp == typeid(Pit)){
                 field.at(i).at(j) = new Pit(i, j, "_");
                 continue;
             }
 
-            if(tile_tmp == typeid(Door)){
+            if(tile_tmp == typeid(Ramp)){
                 field.at(i).at(j) = new Ramp(i, j, "<");
                 continue;
             }
@@ -194,6 +194,16 @@ Level::Level(const Level &l):rows(l.getRows()), cols(l.getCols()), lvl_string(l.
     if(door1_found && switch1_found){
         switch1->attach(door1);
     }
+}
+
+Level &Level::operator=(const Level &l)
+{
+    this->setField(l.getField());
+    this->setCharacters(l.getCharacters());
+    this->setCols(l.getCols());
+    this->setRows(l.getRows());
+    this->setLvl_string(l.getLvl_string());
+    return *this;
 }
 
 Tile *Level::getTile(int row, int col)
@@ -234,4 +244,29 @@ std::string Level::getLvl_string() const
 std::vector<std::vector<Tile *> > Level::getField() const
 {
     return field;
+}
+
+void Level::setField(const std::vector<std::vector<Tile *> > &newField)
+{
+    field = newField;
+}
+
+void Level::setCharacters(const std::vector<Character *> &newCharacters)
+{
+    characters = newCharacters;
+}
+
+void Level::setLvl_string(const std::string &newLvl_string)
+{
+    lvl_string = newLvl_string;
+}
+
+void Level::setRows(int newRows)
+{
+    rows = newRows;
+}
+
+void Level::setCols(int newCols)
+{
+    cols = newCols;
 }
