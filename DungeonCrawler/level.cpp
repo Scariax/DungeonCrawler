@@ -130,18 +130,24 @@ Level::Level(const Level &l):rows(l.getRows()), cols(l.getCols()), lvl_string(l.
 
     for(int i = 0; i < rows; i++){
         for(int j = 0; j < cols; j++){
-            switch(lvl_string.at(index)){
-            case '#':
+            switch(typeid(*l.getField().at(i),at(j))){
+            case typeid(Wall):
                 field.at(i).at(j) = new Wall(i, j, "#");
                 index++;
                 break;
 
-            case '.':
+            case typeid(Floor):
                 field.at(i).at(j) = new Floor(i, j, ".");
                 index++;
+                if(l.getField().at(i).at(j)->hasCharacter()){
+                    Character* new_char = new Character("X");
+                    characters.push_back(new_char);
+                    field.at(i).at(j)->setCharacter(new_char);
+                    new_char->setChar_tile(field.at(i).at(j));
+                }
                 break;
 
-            case 'O':
+            case typeid(Portal):
                 if(portal1_found)
                 {
                     portal2 = new Portal(i, j, "O");
@@ -159,37 +165,28 @@ Level::Level(const Level &l):rows(l.getRows()), cols(l.getCols()), lvl_string(l.
                 index++;
                 break;
 
-            case '?':
+            case typeid(Switch):
                 switch1 = new Switch(i, j, "?");
                 field.at(i).at(j) = switch1;
                 index++;
                 switch1_found = true;
                 break;
 
-            case '-':
+            case typeid(Door):
                 door1 = new Door(i, j, "-");
                 field.at(i).at(j) = door1;
                 door1_found = true;
                 index++;
                 break;
 
-            case '_':
+            case typeid(Pit):
                 field.at(i).at(j) = new Pit(i, j, "_");
                 index++;
                 break;
 
-            case '<':
+            case typeid(Ramp):
                 field.at(i).at(j) = new Ramp(i, j, "<");
                 index++;
-                break;
-
-            case 'X':
-                field.at(i).at(j) = new Floor(i, j, ".");
-                index++;
-                Character* new_char = new Character("X");
-                characters.push_back(new_char);
-                field.at(i).at(j)->setCharacter(new_char);
-                new_char->setChar_tile(field.at(i).at(j));
                 break;
             }
         }
@@ -232,4 +229,9 @@ std::vector<Character *> Level::getCharacters() const
 std::string Level::getLvl_string() const
 {
     return lvl_string;
+}
+
+std::vector<std::vector<Tile *> > Level::getField() const
+{
+    return field;
 }

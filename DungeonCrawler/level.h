@@ -20,6 +20,8 @@ public:
 
     std::string getLvl_string() const;
 
+    std::vector<std::vector<Tile *> > getField() const;
+
 private:
     std::vector<std::vector<Tile*>> field;
     std::vector<Character *> characters;
