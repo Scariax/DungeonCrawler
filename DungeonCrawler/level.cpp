@@ -203,6 +203,17 @@ Level &Level::operator=(const Level &l)
     this->cols = l.cols;
     this->rows = l.rows;
     this->lvl_string = l.lvl_string;
+    for(auto& x:this->characters){
+        delete x;
+    }
+    this->characters.clear();
+
+    for(auto& x:this->field){
+        for(auto y:x){
+            delete y;
+        }
+    }
+    this->field.clear();
 
     Portal* portal1 = nullptr;
     Portal* portal2 = nullptr;
