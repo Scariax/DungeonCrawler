@@ -98,17 +98,17 @@ Level::Level(int row, int col, std::string lvl):rows(row), cols(col), lvl_string
 
 Level::~Level()
 {
-    for(auto& x:field){
+    for(auto& x:this->field){
         for(auto y:x){
             delete y;
         }
     }
-    field.clear();
+    this->field.clear();
 
-    for(auto& z:characters){
+    for(auto& z:this->characters){
         delete z;
     }
-    characters.clear();
+    this->characters.clear();
 }
 
 Level::Level(const Level &l):rows(l.getRows()), cols(l.getCols()), lvl_string(l.getLvl_string())
@@ -130,8 +130,10 @@ Level::Level(const Level &l):rows(l.getRows()), cols(l.getCols()), lvl_string(l.
 
     for(int i = 0; i < rows; i++){
         for(int j = 0; j < cols; j++){
-            auto obj = l.getTile(i, j);
-            const std::type_info& tile_tmp = typeid(*obj);
+            //auto obj = l.getTile(i, j);
+            //const std::type_info& tile_tmp = typeid(*obj);
+            const std::type_info& tile_tmp = typeid(*l.getTile(i, j));
+            delete field.at(i).at(j);
             if(tile_tmp == typeid(Wall)){
                 field.at(i).at(j) = new Wall(i, j, "#");
                 continue;
@@ -198,11 +200,93 @@ Level::Level(const Level &l):rows(l.getRows()), cols(l.getCols()), lvl_string(l.
 
 Level &Level::operator=(const Level &l)
 {
-    this->setField(l.getField());
-    this->setCharacters(l.getCharacters());
-    this->setCols(l.getCols());
-    this->setRows(l.getRows());
-    this->setLvl_string(l.getLvl_string());
+    this->cols = l.cols;
+    this->rows = l.rows;
+    this->lvl_string = l.lvl_string;
+
+    Portal* portal1 = nullptr;
+    Portal* portal2 = nullptr;
+
+    Door* door1;
+    Switch* switch1;
+
+    bool portal1_found = false;
+    bool door1_found = false;
+    bool switch1_found = false;
+
+    field.resize(rows);
+    for(int i = 0; i < rows; ++i){
+        field.at(i).resize(cols, nullptr);
+    }
+
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < cols; j++){
+            //auto obj = l.getTile(i, j);
+            //const std::type_info& tile_tmp = typeid(*obj);
+            const std::type_info& tile_tmp = typeid(*l.getTile(i, j));
+            delete field.at(i).at(j);
+            if(tile_tmp == typeid(Wall)){
+                field.at(i).at(j) = new Wall(i, j, "#");
+                continue;
+            }
+
+            if(tile_tmp == typeid(Floor)){
+                field.at(i).at(j) = new Floor(i, j, ".");
+                if(l.getField().at(i).at(j)->hasCharacter()){
+                    Character* new_char = new Character("X");
+                    characters.push_back(new_char);
+                    field.at(i).at(j)->setCharacter(new_char);
+                    new_char->setChar_tile(field.at(i).at(j));
+                }
+                continue;
+            }
+
+            if(tile_tmp == typeid(Portal)){
+                if(portal1_found)
+                {
+                    portal2 = new Portal(i, j, "O");
+                    field.at(i).at(j) = portal2;
+                    portal2->setDestination(portal1);
+                    portal1->setDestination(portal2);
+                    portal1_found = false;
+                }
+                else
+                {
+                    portal1 = new Portal(i, j, "O");
+                    field.at(i).at(j) = portal1;
+                    portal1_found = true;
+                }
+                continue;
+            }
+
+            if(tile_tmp == typeid(Switch)){
+                switch1 = new Switch(i, j, "?");
+                field.at(i).at(j) = switch1;
+                switch1_found = true;
+                continue;
+            }
+
+            if(tile_tmp == typeid(Door)){
+                door1 = new Door(i, j, "-");
+                field.at(i).at(j) = door1;
+                door1_found = true;
+                continue;
+            }
+
+            if(tile_tmp == typeid(Pit)){
+                field.at(i).at(j) = new Pit(i, j, "_");
+                continue;
+            }
+
+            if(tile_tmp == typeid(Ramp)){
+                field.at(i).at(j) = new Ramp(i, j, "<");
+                continue;
+            }
+        }
+    }
+    if(door1_found && switch1_found){
+        switch1->attach(door1);
+    }
     return *this;
 }
 

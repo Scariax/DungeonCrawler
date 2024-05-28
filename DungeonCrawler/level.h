@@ -18,7 +18,6 @@ public:
     void placeCharacter(Character *c, int row, int col);
     int getRows() const;
     int getCols() const;
-
     std::vector<Character *> getCharacters() const;
 
     std::string getLvl_string() const;
