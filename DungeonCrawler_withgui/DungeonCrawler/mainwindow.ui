@@ -82,7 +82,7 @@
              <cursorShape>BlankCursor</cursorShape>
             </property>
             <property name="styleSheet">
-             <string notr="true">border-image: url(:/textures/floor/floor1.png);</string>
+             <string notr="true">border-image: none;</string>
             </property>
             <layout class="QGridLayout" name="gridLayout_2">
              <property name="sizeConstraint">
