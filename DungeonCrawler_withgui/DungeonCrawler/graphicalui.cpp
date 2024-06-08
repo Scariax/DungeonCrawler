@@ -9,7 +9,7 @@ void GraphicalUI::draw(Level* level)
     ui_m->draw(level);
 }
 
-Input GraphicalUI::move()
+Input GraphicalUI::move(char input)
 {
-    return AbstractController::move();
+    return AbstractController::move(input);
 }

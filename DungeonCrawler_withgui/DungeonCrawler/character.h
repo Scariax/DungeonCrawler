@@ -12,7 +12,7 @@ public:
 
     std::string getTexture() const;
 
-    Input move();
+    Input move(char input);
 
     virtual ~Character() = default;
 

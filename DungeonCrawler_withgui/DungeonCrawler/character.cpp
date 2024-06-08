@@ -7,9 +7,9 @@ std::string Character::getTexture() const
     return texture;
 }
 
-Input Character::move()
+Input Character::move(char input)
 {
-    return abstrCon->move();
+    return abstrCon->move(input);
 }
 
 Tile *Character::getChar_tile() const

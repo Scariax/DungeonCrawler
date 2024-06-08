@@ -1,3 +1,4 @@
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "level.h"
@@ -35,10 +36,15 @@ MainWindow::MainWindow(DungeonCrawler* dc, QWidget *parent)
             std::string texture = level->getTile(row, col)->getTexture();
             char* tex_c= texture.data();
             if(*tex_c == 'X'){
-                widget->setStyleSheet("border-image:url(:/textures/floor/floor1.png);");
+                widget->setPixmap(QPixmap(":/textures/floor/floor1.png"));
+                l->addWidget(widget, row, col, Qt::AlignRight| Qt::AlignBottom);
             }
-            l->addWidget(widget, row, col, Qt::AlignCenter);
-            widget->lower();
+            if(*tex_c == '<' || *tex_c == '_'){
+                l->addWidget(widget, row, col, Qt::AlignLeft | Qt::AlignTop);
+            }
+            else{
+                l->addWidget(widget, row, col, Qt::AlignRight| Qt::AlignBottom);
+            }
         }
     }
     l->setAlignment(Qt::AlignHCenter);
@@ -76,70 +82,78 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 
 void MainWindow::draw(Level* level)
 {
+
     for (int row = 0; row < level->getRows(); row++)
     {
         for (int col = 0; col < level->getCols(); col++)
         {
-            QWidget* widget = ui_m->tiles->itemAtPosition(row, col)->widget();
+            QWidget* widget1 = ui_m->tiles->itemAtPosition(row, col)->widget();
+
+            QLabel* widget = qobject_cast<QLabel*>(widget1);
+
             QLabel* charac = new QLabel(nullptr);
+
             std::string texture = level->getTile(row, col)->getTexture();
             char* tex_c= texture.data();
 
-            switch (*tex_c) {
-            case '.':
-                widget->setStyleSheet("border-image:url(:/textures/floor/floor1.png);");
-                break;
-            case '#':
-                widget->setStyleSheet("border-image:url(:/textures/wall/wall1.png);");
-                break;
-            case '<':
-                widget->setStyleSheet("border-image:url(:/textures/ramp.png);");
-                charac->lower();
-                break;
-            case '_':
-                widget->setStyleSheet("border-image:url(:/textures/pit.png);");
-                charac->lower();
-                break;
-            case 'O':
-                widget->setStyleSheet("border-image:url(:/textures/portal/portal1.png);");
-                break;
-            case '?':
-                widget->setStyleSheet("border-image:url(:/textures/switch.png);");
-                break;
-            case '-':
-                widget->setStyleSheet("border-image:url(:/textures/doors/door1.png);");
-                break;
-            case '\\':
-                widget->setStyleSheet("border-image:url(:/textures/doors/door2.png);");
-                break;
-            default:
-                break;
+            int tmp = (row + col)%5;
+
+            if(*tex_c=='.'){
+                if(tmp== 0){
+                    widget->setPixmap(QPixmap(":/textures/floor/floor1.png"));
+                }
+                if(tmp==1){
+                    widget->setPixmap(QPixmap(":/textures/floor/floor2.png"));
+                }
+                if(tmp==2){
+                    widget->setPixmap(QPixmap(":/textures/floor/floor3.png"));
+                }
+                if(tmp==3){
+                    widget->setPixmap(QPixmap(":/textures/floor/floor4.png"));
+                }
+                if(tmp==4){
+                    widget->setPixmap(QPixmap(":/textures/floor/floor5.png"));
+                }
+            }
+            else if(*tex_c=='#'){
+                widget->setPixmap(QPixmap(":/textures/wall/wall1.png"));
+            }
+            else if(*tex_c=='<'){
+                widget->setPixmap(QPixmap(":/textures/ramp.png"));
+            }
+            else if(*tex_c=='_'){
+                widget->setPixmap(QPixmap(":/textures/pit.png"));
+            }
+            else if(*tex_c=='O'){
+                widget->setPixmap(QPixmap(":/textures/portal/portal1.png"));
+            }
+            else if(*tex_c=='?'){
+                widget->setPixmap(QPixmap(":/textures/switch.png"));
+            }
+            else if(*tex_c=='-'){
+                widget->setPixmap(QPixmap(":/textures/doors/door1.png"));
+            }
+            else if(*tex_c=='\\'){
+                widget->setPixmap(QPixmap(":/textures/doors/door2.png"));
             }
             if(level->getTile(row, col)->hasCharacter())
             {
                 cur_pos_row=row;
                 cur_pos_col=col;
-
-                charac->setStyleSheet("background: transparent;border-image:url(:/textures/char/front/char_front_2.png);");
+                charac->setStyleSheet("background: transparent; border-image: none; "); //border-image:url(:/textures/char/front/char_front_2.png);
+                charac->setPixmap(QPixmap(":/textures/char/front/char_front_2.png"));
                 charac->setFixedSize(55,55);
                 charac->setScaledContents(true);
                 charac->setParent(nullptr);
-                ui_m->tiles->addWidget(charac, row, col, Qt::AlignCenter);
+                if(*tex_c == '<' || *tex_c == '_'){
+                    ui_m->tiles->addWidget(charac, row, col, Qt::AlignRight | Qt::AlignBottom);
+                }
+                else{
+                    ui_m->tiles->addWidget(charac, row, col, Qt::AlignLeft  | Qt::AlignTop);
+                }
             }
         }
     }
-}
-
-void MainWindow::on_upleft_clicked()
-{
-    QWidget* widget = ui_m->tiles->itemAtPosition(cur_pos_row,cur_pos_col)->widget();
-    ui_m->tiles->removeWidget(widget);
-    widget->setParent(nullptr);
-    delete widget;
-
-    dc->turn(up);
-    dc->turn(left);
-    this->draw(dc->getLevel());
 }
 
 void MainWindow::remove_exis_char()
@@ -148,6 +162,15 @@ void MainWindow::remove_exis_char()
     ui_m->tiles->removeWidget(widget);
     widget->setParent(nullptr);
     delete widget;
+}
+
+void MainWindow::on_upleft_clicked()
+{
+    remove_exis_char();
+
+    dc->turn(up);
+    dc->turn(left);
+    this->draw(dc->getLevel());
 }
 
 void MainWindow::on_upright_clicked()

@@ -10,7 +10,7 @@ public:
     GraphicalUI(MainWindow* mw);
     void draw(Level *level) override;
     virtual ~GraphicalUI() = default;
-    Input move() override;
+    Input move(char input) override;
 
 private:
     MainWindow* ui_m;
