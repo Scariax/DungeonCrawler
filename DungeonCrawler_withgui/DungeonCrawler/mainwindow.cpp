@@ -30,21 +30,15 @@ MainWindow::MainWindow(DungeonCrawler* dc, QWidget *parent)
 
             QLabel* widget = new QLabel(nullptr);
 
-            widget->setFixedSize(80,60);
             widget->setScaledContents(true);
 
             std::string texture = level->getTile(row, col)->getTexture();
             char* tex_c= texture.data();
             if(*tex_c == 'X'){
                 widget->setPixmap(QPixmap(":/textures/floor/floor1.png"));
-                l->addWidget(widget, row, col, Qt::AlignRight| Qt::AlignBottom);
+                l->addWidget(widget, row, col, Qt::AlignCenter);
             }
-            if(*tex_c == '<' || *tex_c == '_'){
-                l->addWidget(widget, row, col, Qt::AlignLeft | Qt::AlignTop);
-            }
-            else{
-                l->addWidget(widget, row, col, Qt::AlignRight| Qt::AlignBottom);
-            }
+            l->addWidget(widget, row, col, Qt::AlignCenter);
         }
     }
     l->setAlignment(Qt::AlignHCenter);
@@ -149,15 +143,34 @@ void MainWindow::draw(Level* level)
                 charac->setFixedSize(55,55);
                 charac->setScaledContents(true);
                 charac->setParent(nullptr);
-                if(*tex_c == '<' || *tex_c == '_'){
-                    ui_m->tiles->addWidget(charac, row, col, Qt::AlignRight | Qt::AlignBottom);
-                }
-                else{
-                    ui_m->tiles->addWidget(charac, row, col, Qt::AlignLeft  | Qt::AlignTop);
-                }
+                ui_m->tiles->addWidget(charac, row, col, Qt::AlignCenter);
             }
+
+
+            //
+
         }
     }
+
+
+
+    const int w = ui_m->centralwidget->width() / level->getRows();
+    const int h = ui_m->centralwidget->height() / level->getCols();
+
+    const int opt = std::min(w, h);
+
+
+    ui_m->verticalLayout->setContentsMargins(opt,opt*1.5,opt,opt*0.5);
+
+    for (int row = 0; row < level->getRows(); row++)
+    {
+        for (int col = 0; col < level->getCols(); col++)
+        {
+            QWidget* widget = ui_m->tiles->itemAtPosition(row, col)->widget();
+            widget->setFixedSize(opt*0.80, opt*0.80);
+        }
+    }
+
 }
 
 void MainWindow::remove_exis_char()
@@ -171,18 +184,28 @@ void MainWindow::remove_exis_char()
 void MainWindow::on_upleft_clicked()
 {
     remove_exis_char();
-    if(dc->turn(up))
-        if(dc->turn(left))
-            dc->turn(up);
+    if(dc->turn(up)){
+        if(!(dc->turn(left)))
+            dc->turn(down);
+    }
+    else if(dc->turn(left)){
+        if(!(dc->turn(up)))
+            dc->turn(right);
+    }
     this->draw(dc->getLevel());
 }
 
 void MainWindow::on_upright_clicked()
 {
     remove_exis_char();
-    if(dc->turn(up))
-        if(dc->turn(right))
-            dc->turn(up);
+    if(dc->turn(up)){
+        if(!(dc->turn(right)))
+            dc->turn(down);
+    }
+    else if(dc->turn(right)){
+        if(!(dc->turn(up)))
+            dc->turn(left);
+    }
     this->draw(dc->getLevel());
 }
 
@@ -210,18 +233,28 @@ void MainWindow::on_right_clicked()
 void MainWindow::on_downright_clicked()
 {
     remove_exis_char();
-    if(dc->turn(down))
-        if(dc->turn(right))
-            dc->turn(down);
+    if(dc->turn(down)){
+        if(!(dc->turn(right)))
+            dc->turn(up);
+    }
+    else if(dc->turn(right)){
+        if(!(dc->turn(down)))
+            dc->turn(left);
+    }
     this->draw(dc->getLevel());
 }
 
 void MainWindow::on_downleft_clicked()
 {
     remove_exis_char();
-    if(dc->turn(down))
-        if(dc->turn(left))
-            dc->turn(down);
+    if(dc->turn(down)){
+        if(!(dc->turn(left)))
+            dc->turn(up);
+    }
+    else if(dc->turn(left)){
+        if(!(dc->turn(down)))
+            dc->turn(right);
+    }
     this->draw(dc->getLevel());
 }
 

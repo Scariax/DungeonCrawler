@@ -23,6 +23,7 @@ Level *DungeonCrawler::getLevel() const
 
 bool DungeonCrawler::turn(Input input_terminal)
 {
+    bool Moved = false;
     for(Character* character:level->getCharacters()){
         if(character!=nullptr){
 
@@ -36,28 +37,36 @@ bool DungeonCrawler::turn(Input input_terminal)
                 dest_row-=1;
                 int dest_col = current_tile->getCol();
                 Tile* dest_tile = level->getTile(dest_row, dest_col);
-                current_tile->moveTo(dest_tile, character);
+                if(current_tile->moveTo(dest_tile, character)){
+                    Moved = true;
+                }
                 break;
             }
             case down:
             {
                 dest_row+=1;
                 Tile* dest_tile = level->getTile(dest_row, dest_col);
-                current_tile->moveTo(dest_tile, character);
+                if(current_tile->moveTo(dest_tile, character)){
+                    Moved = true;
+                }
                 break;
             }
             case right:
             {
                 dest_col+=1;
                 Tile* dest_tile = level->getTile(dest_row, dest_col);
-                current_tile->moveTo(dest_tile, character);
+                if(current_tile->moveTo(dest_tile, character)){
+                    Moved = true;
+                }
                 break;
             }
             case left:
             {
                 dest_col-=1;
                 Tile* dest_tile = level->getTile(dest_row, dest_col);
-                current_tile->moveTo(dest_tile, character);
+                if(current_tile->moveTo(dest_tile, character)){
+                    Moved = true;
+                }
                 break;
             }
             case terminate:
@@ -67,5 +76,5 @@ bool DungeonCrawler::turn(Input input_terminal)
             }
         }
     }
-    return true;
+    return Moved;
 }
