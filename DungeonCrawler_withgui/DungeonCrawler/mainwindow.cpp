@@ -120,9 +120,13 @@ void MainWindow::draw(Level* level)
             }
             else if(*tex_c=='<'){
                 widget->setPixmap(QPixmap(":/textures/ramp.png"));
+                widget->raise();
+                charac->lower();
             }
             else if(*tex_c=='_'){
                 widget->setPixmap(QPixmap(":/textures/pit.png"));
+                widget->raise();
+                charac->lower();
             }
             else if(*tex_c=='O'){
                 widget->setPixmap(QPixmap(":/textures/portal/portal1.png"));
@@ -167,24 +171,24 @@ void MainWindow::remove_exis_char()
 void MainWindow::on_upleft_clicked()
 {
     remove_exis_char();
-    dc->turn(up);
-    dc->turn(left);
+    if(dc->turn(up))
+        if(dc->turn(left))
+            dc->turn(up);
     this->draw(dc->getLevel());
 }
 
 void MainWindow::on_upright_clicked()
 {
     remove_exis_char();
-
-    dc->turn(up);
-    dc->turn(right);
+    if(dc->turn(up))
+        if(dc->turn(right))
+            dc->turn(up);
     this->draw(dc->getLevel());
 }
 
 void MainWindow::on_up_clicked()
 {
     remove_exis_char();
-
     dc->turn(up);
     this->draw(dc->getLevel());
 }
@@ -192,8 +196,6 @@ void MainWindow::on_up_clicked()
 void MainWindow::on_left_clicked()
 {
     remove_exis_char();
-
-
     dc->turn(left);
     this->draw(dc->getLevel());
 }
@@ -201,7 +203,6 @@ void MainWindow::on_left_clicked()
 void MainWindow::on_right_clicked()
 {
     remove_exis_char();
-
     dc->turn(right);
     this->draw(dc->getLevel());
 }
@@ -209,25 +210,24 @@ void MainWindow::on_right_clicked()
 void MainWindow::on_downright_clicked()
 {
     remove_exis_char();
-
-    dc->turn(down);
-    dc->turn(right);
+    if(dc->turn(down))
+        if(dc->turn(right))
+            dc->turn(down);
     this->draw(dc->getLevel());
 }
 
 void MainWindow::on_downleft_clicked()
 {
     remove_exis_char();
-
-    dc->turn(down);
-    dc->turn(left);
+    if(dc->turn(down))
+        if(dc->turn(left))
+            dc->turn(down);
     this->draw(dc->getLevel());
 }
 
 void MainWindow::on_down_clicked()
 {
     remove_exis_char();
-
     dc->turn(down);
     this->draw(dc->getLevel());
 }

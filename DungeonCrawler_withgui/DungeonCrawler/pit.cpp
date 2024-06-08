@@ -7,9 +7,6 @@ Pit::Pit(int row, int col, std::string texture): Tile(row, col, texture)
 
 std::string Pit::getTexture() const
 {
-    if(hasCharacter()){
-        return "X";
-    }
     return Tile::getTexture();
 }
 

@@ -5,9 +5,6 @@ Portal::Portal(int row, int col, std::string texture) : Tile(row, col, texture),
 
 std::string Portal::getTexture() const
 {
-    if(hasCharacter()){
-        return "X";
-    }
     return Tile::getTexture();
 }
 

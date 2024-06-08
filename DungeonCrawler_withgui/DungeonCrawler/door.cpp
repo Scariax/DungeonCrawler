@@ -7,10 +7,7 @@ Door::Door(int row, int col, std::string texture):Tile(row,col,texture),Passive(
 
 std::string Door::getTexture() const
 {
-    if(hasCharacter()){
-        return "X";
-    }
-    else if(Open){
+    if(Open){
         return "\\";
     }
     else{
