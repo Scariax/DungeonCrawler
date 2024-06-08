@@ -20,10 +20,15 @@ public:
 
     void setChar_tile(Tile *newChar_tile);
 
+    void setMoveDirection(Input newMoveDirection);
+
+    Input getMoveDirection() const;
+
 private:
     std::string texture;
     Tile* char_tile;
     AbstractController* abstrCon;
+    Input moveDirection;
 };
 
 #endif // CHARACTER_H

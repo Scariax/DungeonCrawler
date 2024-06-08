@@ -36,7 +36,6 @@ MainWindow::MainWindow(DungeonCrawler* dc, QWidget *parent)
             char* tex_c= texture.data();
             if(*tex_c == 'X'){
                 widget->setPixmap(QPixmap(":/textures/floor/floor1.png"));
-                l->addWidget(widget, row, col, Qt::AlignCenter);
             }
             l->addWidget(widget, row, col, Qt::AlignCenter);
         }
@@ -85,8 +84,6 @@ void MainWindow::draw(Level* level)
 
             QLabel* widget = qobject_cast<QLabel*>(widget1);
 
-            QLabel* charac = new QLabel(nullptr);
-
             std::string texture = level->getTile(row, col)->getTexture();
             char* tex_c= texture.data();
 
@@ -114,13 +111,10 @@ void MainWindow::draw(Level* level)
             }
             else if(*tex_c=='<'){
                 widget->setPixmap(QPixmap(":/textures/ramp.png"));
-                widget->raise();
-                charac->lower();
             }
             else if(*tex_c=='_'){
                 widget->setPixmap(QPixmap(":/textures/pit.png"));
-                widget->raise();
-                charac->lower();
+                widget->setStyleSheet("background: transparent;");
             }
             else if(*tex_c=='O'){
                 widget->setPixmap(QPixmap(":/textures/portal/portal1.png"));
@@ -136,23 +130,41 @@ void MainWindow::draw(Level* level)
             }
             if(level->getTile(row, col)->hasCharacter())
             {
+                QLabel* charac = new QLabel(nullptr);
+
                 cur_pos_row=row;
                 cur_pos_col=col;
-                charac->setStyleSheet("background: transparent; border-image: none; "); //border-image:url(:/textures/char/front/char_front_2.png);
-                charac->setPixmap(QPixmap(":/textures/char/front/char_front_2.png"));
+
+                charac->setStyleSheet("background: transparent; border-image: none;");
+
+                Input moved_dir = level->getTile(row, col)->getCharacter()->getMoveDirection();
+
+                if(moved_dir==up){
+                    charac->setPixmap(QPixmap(":/textures/char/back/char_back_2.png"));
+                }
+                else if(moved_dir==down){
+                    charac->setPixmap(QPixmap(":/textures/char/front/char_front_2.png"));
+                }
+                else if(moved_dir==right){
+                    charac->setPixmap(QPixmap(":/textures/char/right/char_right_2.png"));
+                }
+                else if(moved_dir==left){
+                    charac->setPixmap(QPixmap(":/textures/char/left/char_left_2.png"));
+                }
+                else{
+                    charac->setPixmap(QPixmap(":/textures/char/front/char_front_2.png"));
+                }
                 charac->setFixedSize(55,55);
                 charac->setScaledContents(true);
                 charac->setParent(nullptr);
                 ui_m->tiles->addWidget(charac, row, col, Qt::AlignCenter);
+
+                if(*tex_c=='_'){
+                    charac->stackUnder(widget);
+                }
             }
-
-
-            //
-
         }
     }
-
-
 
     const int w = ui_m->centralwidget->width() / level->getRows();
     const int h = ui_m->centralwidget->height() / level->getCols();
@@ -185,12 +197,14 @@ void MainWindow::on_upleft_clicked()
 {
     remove_exis_char();
     if(dc->turn(up)){
-        if(!(dc->turn(left)))
+        if(!(dc->turn(left))){
             dc->turn(down);
+        }
     }
     else if(dc->turn(left)){
-        if(!(dc->turn(up)))
+        if(!(dc->turn(up))){
             dc->turn(right);
+        }
     }
     this->draw(dc->getLevel());
 }
@@ -199,12 +213,13 @@ void MainWindow::on_upright_clicked()
 {
     remove_exis_char();
     if(dc->turn(up)){
-        if(!(dc->turn(right)))
+        if(!(dc->turn(right))){
             dc->turn(down);
-    }
+        }}
     else if(dc->turn(right)){
-        if(!(dc->turn(up)))
+        if(!(dc->turn(up))){
             dc->turn(left);
+        }
     }
     this->draw(dc->getLevel());
 }
@@ -234,12 +249,14 @@ void MainWindow::on_downright_clicked()
 {
     remove_exis_char();
     if(dc->turn(down)){
-        if(!(dc->turn(right)))
+        if(!(dc->turn(right))){
             dc->turn(up);
+        }
     }
     else if(dc->turn(right)){
-        if(!(dc->turn(down)))
+        if(!(dc->turn(down))){
             dc->turn(left);
+        }
     }
     this->draw(dc->getLevel());
 }
@@ -248,12 +265,14 @@ void MainWindow::on_downleft_clicked()
 {
     remove_exis_char();
     if(dc->turn(down)){
-        if(!(dc->turn(left)))
+        if(!(dc->turn(left))){
             dc->turn(up);
+        }
     }
     else if(dc->turn(left)){
-        if(!(dc->turn(down)))
+        if(!(dc->turn(down))){
             dc->turn(right);
+        }
     }
     this->draw(dc->getLevel());
 }

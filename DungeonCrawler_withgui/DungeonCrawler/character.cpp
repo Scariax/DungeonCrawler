@@ -1,6 +1,6 @@
 #include "character.h"
 
-Character::Character(std::string texture):texture(texture), char_tile(nullptr), abstrCon(nullptr) {}
+Character::Character(std::string texture):texture(texture), char_tile(nullptr), abstrCon(nullptr), moveDirection(down) {}
 
 std::string Character::getTexture() const
 {
@@ -20,6 +20,16 @@ Tile *Character::getChar_tile() const
 void Character::setChar_tile(Tile *newChar_tile)
 {
     char_tile = newChar_tile;
+}
+
+void Character::setMoveDirection(Input newMoveDirection)
+{
+    moveDirection = newMoveDirection;
+}
+
+Input Character::getMoveDirection() const
+{
+    return moveDirection;
 }
 
 

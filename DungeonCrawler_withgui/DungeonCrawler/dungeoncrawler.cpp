@@ -35,9 +35,9 @@ bool DungeonCrawler::turn(Input input_terminal)
             case up:
             {
                 dest_row-=1;
-                int dest_col = current_tile->getCol();
                 Tile* dest_tile = level->getTile(dest_row, dest_col);
                 if(current_tile->moveTo(dest_tile, character)){
+                    character->setMoveDirection(up);
                     Moved = true;
                 }
                 break;
@@ -47,6 +47,7 @@ bool DungeonCrawler::turn(Input input_terminal)
                 dest_row+=1;
                 Tile* dest_tile = level->getTile(dest_row, dest_col);
                 if(current_tile->moveTo(dest_tile, character)){
+                    character->setMoveDirection(down);
                     Moved = true;
                 }
                 break;
@@ -56,6 +57,7 @@ bool DungeonCrawler::turn(Input input_terminal)
                 dest_col+=1;
                 Tile* dest_tile = level->getTile(dest_row, dest_col);
                 if(current_tile->moveTo(dest_tile, character)){
+                    character->setMoveDirection(right);
                     Moved = true;
                 }
                 break;
@@ -65,6 +67,7 @@ bool DungeonCrawler::turn(Input input_terminal)
                 dest_col-=1;
                 Tile* dest_tile = level->getTile(dest_row, dest_col);
                 if(current_tile->moveTo(dest_tile, character)){
+                    character->setMoveDirection(left);
                     Moved = true;
                 }
                 break;
