@@ -167,7 +167,6 @@ void MainWindow::remove_exis_char()
 void MainWindow::on_upleft_clicked()
 {
     remove_exis_char();
-
     dc->turn(up);
     dc->turn(left);
     this->draw(dc->getLevel());

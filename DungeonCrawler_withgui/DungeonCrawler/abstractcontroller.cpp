@@ -22,9 +22,6 @@ Input AbstractController::move(char input)
         case 'x':
             return terminate;
             break;
-        default:
-            std::cout << "Wrong Input, Please choose one of these (w,a,s,d,x)!" << std::endl << std::endl;
-            continue;
         }
     }
 }
