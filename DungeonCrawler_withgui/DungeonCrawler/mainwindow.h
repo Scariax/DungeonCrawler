@@ -42,6 +42,8 @@ private slots:
 
     void on_downleft_clicked();
 
+    void on_turn_clicked();
+
 protected:
 
 

@@ -74,6 +74,7 @@ bool DungeonCrawler::turn(Input input_terminal)
             }
             case terminate:
             {
+                character->setMoveDirection(terminate);
                 return false;
             }
             }

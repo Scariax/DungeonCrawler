@@ -142,17 +142,17 @@ void MainWindow::draw(Level* level)
                 if(moved_dir==up){
                     charac->setPixmap(QPixmap(":/textures/char/back/char_back_2.png"));
                 }
-                else if(moved_dir==down){
+                if(moved_dir==down){
                     charac->setPixmap(QPixmap(":/textures/char/front/char_front_2.png"));
                 }
-                else if(moved_dir==right){
+                if(moved_dir==right){
                     charac->setPixmap(QPixmap(":/textures/char/right/char_right_2.png"));
                 }
-                else if(moved_dir==left){
+                if(moved_dir==left){
                     charac->setPixmap(QPixmap(":/textures/char/left/char_left_2.png"));
                 }
-                else{
-                    charac->setPixmap(QPixmap(":/textures/char/front/char_front_2.png"));
+                if(moved_dir==terminate){
+                     charac->setPixmap(QPixmap(":/textures/char/front/char_front_2.png"));
                 }
                 charac->setFixedSize(55,55);
                 charac->setScaledContents(true);
@@ -160,7 +160,7 @@ void MainWindow::draw(Level* level)
                 ui_m->tiles->addWidget(charac, row, col, Qt::AlignCenter);
 
                 if(*tex_c=='_'){
-                    charac->stackUnder(widget);
+                    charac->lower();
                 }
             }
         }
@@ -199,11 +199,13 @@ void MainWindow::on_upleft_clicked()
     if(dc->turn(up)){
         if(!(dc->turn(left))){
             dc->turn(down);
+            dc->turn(terminate);
         }
     }
     else if(dc->turn(left)){
         if(!(dc->turn(up))){
             dc->turn(right);
+            dc->turn(terminate);
         }
     }
     this->draw(dc->getLevel());
@@ -215,10 +217,12 @@ void MainWindow::on_upright_clicked()
     if(dc->turn(up)){
         if(!(dc->turn(right))){
             dc->turn(down);
+            dc->turn(terminate);
         }}
     else if(dc->turn(right)){
         if(!(dc->turn(up))){
             dc->turn(left);
+            dc->turn(terminate);
         }
     }
     this->draw(dc->getLevel());
@@ -227,21 +231,21 @@ void MainWindow::on_upright_clicked()
 void MainWindow::on_up_clicked()
 {
     remove_exis_char();
-    dc->turn(up);
+    if(!(dc->turn(up)))dc->turn(terminate);
     this->draw(dc->getLevel());
 }
 
 void MainWindow::on_left_clicked()
 {
     remove_exis_char();
-    dc->turn(left);
+    if(!(dc->turn(left)))dc->turn(terminate);
     this->draw(dc->getLevel());
 }
 
 void MainWindow::on_right_clicked()
 {
     remove_exis_char();
-    dc->turn(right);
+    if(!(dc->turn(right)))dc->turn(terminate);
     this->draw(dc->getLevel());
 }
 
@@ -251,11 +255,13 @@ void MainWindow::on_downright_clicked()
     if(dc->turn(down)){
         if(!(dc->turn(right))){
             dc->turn(up);
+            dc->turn(terminate);
         }
     }
     else if(dc->turn(right)){
         if(!(dc->turn(down))){
             dc->turn(left);
+            dc->turn(terminate);
         }
     }
     this->draw(dc->getLevel());
@@ -267,11 +273,13 @@ void MainWindow::on_downleft_clicked()
     if(dc->turn(down)){
         if(!(dc->turn(left))){
             dc->turn(up);
+            dc->turn(terminate);
         }
     }
     else if(dc->turn(left)){
         if(!(dc->turn(down))){
             dc->turn(right);
+            dc->turn(terminate);
         }
     }
     this->draw(dc->getLevel());
@@ -280,7 +288,34 @@ void MainWindow::on_downleft_clicked()
 void MainWindow::on_down_clicked()
 {
     remove_exis_char();
-    dc->turn(down);
+    if((dc->turn(down)))dc->turn(terminate);
+    this->draw(dc->getLevel());
+}
+
+
+void MainWindow::on_turn_clicked()
+{
+    remove_exis_char();
+
+    Input curr_Direction = level->getTile(cur_pos_row, cur_pos_col)->getCharacter()->getMoveDirection();
+
+    switch (curr_Direction) {
+    case up:
+        level->getTile(cur_pos_row, cur_pos_col)->getCharacter()->setMoveDirection(left);
+        break;
+    case down:
+        level->getTile(cur_pos_row, cur_pos_col)->getCharacter()->setMoveDirection(right);
+        break;
+    case right:
+        level->getTile(cur_pos_row, cur_pos_col)->getCharacter()->setMoveDirection(up);
+        break;
+    case left:
+        level->getTile(cur_pos_row, cur_pos_col)->getCharacter()->setMoveDirection(down);
+        break;
+    case terminate:
+        level->getTile(cur_pos_row, cur_pos_col)->getCharacter()->setMoveDirection(right);
+        break;
+    }
     this->draw(dc->getLevel());
 }
 
