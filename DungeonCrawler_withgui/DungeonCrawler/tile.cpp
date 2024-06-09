@@ -1,6 +1,6 @@
 #include "tile.h"
 
-Tile::Tile(int row, int col, std::string texture):texture(texture), character(nullptr), row(row), col(col)
+Tile::Tile(int row, int col, std::string texture):texture(texture), character(nullptr), row(row), col(col), portal_type(0)
 {
 
 }
@@ -75,4 +75,24 @@ int Tile::getRow() const
 int Tile::getCol() const
 {
     return col;
+}
+
+int Tile::getPortal_type() const
+{
+    return portal_type;
+}
+
+void Tile::setPortal_type(int newPortal_type)
+{
+    portal_type = newPortal_type;
+}
+
+int Tile::getFloor_tile_typ() const
+{
+    return floor_tile_typ;
+}
+
+void Tile::setFloor_tile_typ(int newFloor_tile_typ)
+{
+    floor_tile_typ = newFloor_tile_typ;
 }

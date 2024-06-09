@@ -7,6 +7,7 @@
 #include <QLabel>
 #include <iostream>
 #include <QObject>
+#include <random.h>
 
 
 
@@ -36,6 +37,10 @@ MainWindow::MainWindow(DungeonCrawler* dc, QWidget *parent)
             char* tex_c= texture.data();
             if(*tex_c == 'X'){
                 widget->setPixmap(QPixmap(":/textures/floor/floor1.png"));
+            }
+            if(*tex_c == '.'){
+                int flo_typ = getRandom(1,20);
+                level->getTile(row, col)->setFloor_tile_typ(flo_typ);
             }
             l->addWidget(widget, row, col, Qt::AlignCenter);
         }
@@ -87,22 +92,22 @@ void MainWindow::draw(Level* level)
             std::string texture = level->getTile(row, col)->getTexture();
             char* tex_c= texture.data();
 
-            int tmp = (row + col)%5;
+            int tmp = level->getTile(row, col)->getFloor_tile_typ();
 
             if(*tex_c=='.'){
-                if(tmp== 0){
+                if(tmp%5 == 0){
                     widget->setPixmap(QPixmap(":/textures/floor/floor1.png"));
                 }
-                if(tmp==1){
+                if(tmp%5 ==1){
                     widget->setPixmap(QPixmap(":/textures/floor/floor2.png"));
                 }
-                if(tmp==2){
+                if(tmp%5 ==2){
                     widget->setPixmap(QPixmap(":/textures/floor/floor3.png"));
                 }
-                if(tmp==3){
+                if(tmp%5 ==3){
                     widget->setPixmap(QPixmap(":/textures/floor/floor4.png"));
                 }
-                if(tmp==4){
+                if(tmp%5 ==4){
                     widget->setPixmap(QPixmap(":/textures/floor/floor5.png"));
                 }
             }
@@ -117,7 +122,16 @@ void MainWindow::draw(Level* level)
                 widget->setStyleSheet("background: transparent;");
             }
             else if(*tex_c=='O'){
-                widget->setPixmap(QPixmap(":/textures/portal/portal1.png"));
+                int por_typ = level->getTile(row, col)->getPortal_type();
+                if(por_typ%3==0){
+                    widget->setPixmap(QPixmap(":/textures/portal/portal1.png"));
+                }
+                if(por_typ%3==1){
+                    widget->setPixmap(QPixmap(":/textures/portal/portal2.png"));
+                }
+                if(por_typ%3==2){
+                    widget->setPixmap(QPixmap(":/textures/portal/portal3.png"));
+                }
             }
             else if(*tex_c=='?'){
                 widget->setPixmap(QPixmap(":/textures/switch.png"));

@@ -16,6 +16,8 @@ Level::Level(int row, int col, std::string lvl):lvl_string(lvl), rows(row), cols
     Door* door1;
     Switch* switch1;
 
+    int  portal_t{};
+
     bool portal1_found = false;
     bool door1_found = false;
     bool switch1_found = false;
@@ -46,12 +48,14 @@ Level::Level(int row, int col, std::string lvl):lvl_string(lvl), rows(row), cols
                     portal2->setDestination(portal1);
                     portal1->setDestination(portal2);
                     portal1_found = false;
+                    portal1->setPortal_type(portal_t++);
                 }
                 else
                 {
                     portal1 = new Portal(i, j, "O");
                     field.at(i).at(j) = portal1;
                     portal1_found = true;
+                    portal1->setPortal_type(portal_t);
                 }
                 index++;
                 break;

@@ -27,7 +27,8 @@ SOURCES += \
     startscreen.cpp \
     switch.cpp \
     tile.cpp \
-    wall.cpp
+    wall.cpp\
+    random.cpp
 
 HEADERS += \
     abstractcontroller.h \
@@ -47,7 +48,8 @@ HEADERS += \
     startscreen.h \
     switch.h \
     tile.h \
-    wall.h
+    wall.h \
+    random.h
 
 FORMS += \
     mainwindow.ui \

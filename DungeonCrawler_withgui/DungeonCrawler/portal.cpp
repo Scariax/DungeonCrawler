@@ -27,3 +27,13 @@ void Portal::setDestination(Portal *newDestination)
 {
     destination = newDestination;
 }
+
+int Portal::getPortal_type() const
+{
+    return Tile::getPortal_type();
+}
+
+void Portal::setPortal_type(int newPortal_type)
+{
+    Tile::setPortal_type(newPortal_type);
+}

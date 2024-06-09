@@ -22,7 +22,15 @@ public:
 
     int getCol() const;
 
+    virtual int getPortal_type() const;
+    virtual void setPortal_type(int newPortal_type);
+
+    virtual int getFloor_tile_typ() const;
+    virtual void setFloor_tile_typ(int newFloor_tile_typ);
+
 private:
+    int portal_type;
+    int floor_tile_typ;
     std::string texture;
     Character* character;
     const int row;
