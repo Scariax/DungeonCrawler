@@ -19,11 +19,10 @@ public:
     explicit MainWindow(DungeonCrawler *dc, QWidget *parent = nullptr);
     ~MainWindow();
 
-    void resizeEvent(QResizeEvent *event);
+    void resizeEvent(QResizeEvent *event) override;
     void draw(Level* level);
-
     void remove_exis_char();
-
+    void keyPressEvent(QKeyEvent *event) override;
 private slots:
 
     void on_upleft_clicked();

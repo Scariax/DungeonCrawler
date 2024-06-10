@@ -5,9 +5,9 @@
 #include <QFrame>
 #include <QPushButton>
 #include <QLabel>
-#include <iostream>
 #include <QObject>
 #include <random.h>
+#include <QKeyEvent>
 
 
 
@@ -76,6 +76,74 @@ void MainWindow::resizeEvent(QResizeEvent* event)
         }
     }
 
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event){
+    if(event->modifiers() & !Qt::KeypadModifier){
+        return;
+    }
+    switch(event->key()){
+    case(Qt::Key_1):
+    {
+        on_downleft_clicked();
+        break;
+    }
+
+    case(Qt::Key_2):
+    {
+        on_down_clicked();
+        break;
+    }
+
+    case(Qt::Key_3):
+    {
+        on_downright_clicked();
+        break;
+    }
+
+    case(Qt::Key_4):
+    {
+        on_left_clicked();
+        break;
+    }
+
+    case(Qt::Key_5):
+    {
+        on_turn_clicked();
+        break;
+    }
+
+    case(Qt::Key_6):
+    {
+        on_right_clicked();
+        break;
+    }
+
+    case(Qt::Key_7):
+    {
+        on_upleft_clicked();
+        break;
+    }
+
+    case(Qt::Key_8):
+    {
+        on_up_clicked();
+        break;
+    }
+
+    case(Qt::Key_9):
+    {
+        on_upright_clicked();
+        break;
+    }
+
+    case(Qt::Key_X):
+    {
+        close();
+    }
+
+    default:{return;}
+    }
 }
 
 void MainWindow::draw(Level* level)
