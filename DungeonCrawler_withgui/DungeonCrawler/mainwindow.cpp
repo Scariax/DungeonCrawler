@@ -35,9 +35,6 @@ MainWindow::MainWindow(DungeonCrawler* dc, QWidget *parent)
 
             std::string texture = level->getTile(row, col)->getTexture();
             char* tex_c= texture.data();
-            if(*tex_c == 'X'){
-                widget->setPixmap(QPixmap(":/textures/floor/floor1.png"));
-            }
             if(*tex_c == '.'){
                 int flo_typ = getRandom(1,20);
                 level->getTile(row, col)->setFloor_tile_typ(flo_typ);
