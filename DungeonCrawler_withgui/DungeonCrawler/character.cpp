@@ -1,6 +1,6 @@
 #include "character.h"
 
-Character::Character(std::string texture):texture(texture), char_tile(nullptr), abstrCon(nullptr), moveDirection(down) {}
+Character::Character(std::string texture):texture(texture), char_tile(nullptr), abstrCon(nullptr), moveDirection(terminate) {}
 
 std::string Character::getTexture() const
 {

@@ -219,16 +219,16 @@ void MainWindow::draw(Level* level)
                 Input moved_dir = level->getTile(row, col)->getCharacter()->getMoveDirection();
 
                 if(moved_dir==up){
-                    charac->setPixmap(QPixmap(":/textures/char/back/char_back_2.png"));
+                    charac->setPixmap(QPixmap(":/textures/char/back/char_back_1.png"));
                 }
                 if(moved_dir==down){
-                    charac->setPixmap(QPixmap(":/textures/char/front/char_front_2.png"));
+                    charac->setPixmap(QPixmap(":/textures/char/front/char_front_1.png"));
                 }
                 if(moved_dir==right){
-                    charac->setPixmap(QPixmap(":/textures/char/right/char_right_2.png"));
+                    charac->setPixmap(QPixmap(":/textures/char/right/char_right_1.png"));
                 }
                 if(moved_dir==left){
-                    charac->setPixmap(QPixmap(":/textures/char/left/char_left_2.png"));
+                    charac->setPixmap(QPixmap(":/textures/char/left/char_left_1.png"));
                 }
                 if(moved_dir==terminate){
                      charac->setPixmap(QPixmap(":/textures/char/front/char_front_2.png"));
@@ -367,7 +367,7 @@ void MainWindow::on_downleft_clicked()
 void MainWindow::on_down_clicked()
 {
     remove_exis_char();
-    if((dc->turn(down)))dc->turn(terminate);
+    if(!(dc->turn(down)))dc->turn(terminate);
     this->draw(dc->getLevel());
 }
 
