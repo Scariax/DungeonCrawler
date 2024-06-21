@@ -1,9 +1,13 @@
 #ifndef ABSTRACTCONTROLLER_H
 #define ABSTRACTCONTROLLER_H
 
-enum Input{
+enum Input_mov{
     up,
+    upleft,
+    upright,
     down,
+    downleft,
+    downright,
     left,
     right,
     terminate
@@ -13,7 +17,7 @@ class AbstractController
 {
 public:
     AbstractController();
-    virtual Input move(char input) = 0;
+    virtual Input_mov move() = 0;
 };
 
 #endif // ABSTRACTCONTROLLER_H

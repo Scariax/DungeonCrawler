@@ -3,7 +3,7 @@
 
 AbstractView::AbstractView() {}
 
-void AbstractView::draw(Level *)
+void AbstractView::draw()
 {
 
 }

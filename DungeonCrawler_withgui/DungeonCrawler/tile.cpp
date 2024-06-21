@@ -1,6 +1,6 @@
 #include "tile.h"
-
-Tile::Tile(int row, int col, std::string texture):texture(texture), character(nullptr), row(row), col(col), portal_type(0)
+#include "list.h"
+Tile::Tile(int row, int col, std::string texture):portal_type(0), texture(texture), character(nullptr), row(row), col(col)
 {
 
 }
@@ -27,20 +27,28 @@ bool Tile::moveTo(Tile *destTile, Character *who)
     {
         if(tempEnter.first)
         {
-            if(tempEnter.second==nullptr)
-            {
+            if(tempEnter.second==nullptr){
                 destTile->setCharacter(who);
                 this->setCharacter(nullptr);
                 who->setChar_tile(destTile);
                 return true;
             }
-            else
-            {
-                Tile* por_dest = tempEnter.second;
-                por_dest->setCharacter(who);
-                this->setCharacter(nullptr);
-                who->setChar_tile(por_dest);
-                return true;
+            else{
+                if(tempEnter.second->getTexture() == "O"){
+                    Tile* por_dest = tempEnter.second;
+                    por_dest->setCharacter(who);
+                    this->setCharacter(nullptr);
+                    who->setChar_tile(por_dest);
+                    return true;
+                }
+                if(tempEnter.second->getTexture() == "&"){
+                    Tile* por_dest = tempEnter.second;
+                    por_dest->setCharacter(who);
+                    this->setCharacter(nullptr);
+                    who->setChar_tile(por_dest);
+
+                    return true;
+                }
             }
         }
     }

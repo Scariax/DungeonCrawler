@@ -3,7 +3,11 @@
 
 #include <QMainWindow>
 #include "dungeoncrawler.h"
+#include "graphicalui.h"
+#include "abstractcontroller.h"
 #include <QWidget>
+#include <QLabel>
+#include <vector>
 
 
 QT_BEGIN_NAMESPACE
@@ -12,17 +16,24 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
+class DungeonCrawler;
+class GraphicalUI;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+
 public:
     explicit MainWindow(DungeonCrawler *dc, QWidget *parent = nullptr);
     ~MainWindow();
 
     void resizeEvent(QResizeEvent *event) override;
-    void draw(Level* level);
+    void draw();
     void remove_exis_char();
     void keyPressEvent(QKeyEvent *event) override;
+
+//    std::string getLastClicked() const;
+    Input_mov getLastClicked() const;
 private slots:
 
     void on_upleft_clicked();
@@ -54,6 +65,8 @@ private:
     int cur_pos_row{};
     int cur_pos_col{};
 
+    std::vector<std::pair<int,int>> characters;
+    Input_mov LastClicked;
 };
 
 #endif // MAINWINDOW_H

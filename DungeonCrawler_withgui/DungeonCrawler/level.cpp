@@ -6,9 +6,11 @@
 #include "door.h"
 #include "pit.h"
 #include "ramp.h"
+#include "levelchanger.h"
 #include <typeinfo>
+#include "random.h"
 
-Level::Level(int row, int col, std::string lvl):lvl_string(lvl), rows(row), cols(col) {
+Level::Level(int row, int col, std::string lvl):lvl_string(lvl), rows(row), cols(col),level_ch(nullptr) {
     int index = 0;
     Portal* portal1 = nullptr;
     Portal* portal2 = nullptr;
@@ -27,6 +29,8 @@ Level::Level(int row, int col, std::string lvl):lvl_string(lvl), rows(row), cols
         field.at(i).resize(col, nullptr);
     }
 
+    int flo_typ;
+
     for(int i = 0; i < rows; i++){
         for(int j = 0; j < cols; j++){
             switch(lvl_string.at(index)){
@@ -37,6 +41,8 @@ Level::Level(int row, int col, std::string lvl):lvl_string(lvl), rows(row), cols
 
             case '.':
                 field.at(i).at(j) = new Floor(i, j, ".");
+                flo_typ = getRandom(1,20);
+                field.at(i).at(j)->setFloor_tile_typ(flo_typ);
                 index++;
                 break;
 
@@ -85,12 +91,40 @@ Level::Level(int row, int col, std::string lvl):lvl_string(lvl), rows(row), cols
                 break;
 
             case 'X':
+            {
                 field.at(i).at(j) = new Floor(i, j, ".");
                 index++;
-                Character* new_char = new Character("X");
-                characters.push_back(new_char);
-                field.at(i).at(j)->setCharacter(new_char);
-                new_char->setChar_tile(field.at(i).at(j));
+                Character* new_char1 = new Character("X", 5, 5); //just placeholder for stats
+                characters.push_back(new_char1);
+                field.at(i).at(j)->setCharacter(new_char1);
+                new_char1->setChar_tile(field.at(i).at(j));
+                break;
+            }
+            case '1':
+            {
+                field.at(i).at(j) = new Floor(i, j, ".");
+                index++;
+                Character* new_char2 = new Character("1", 3, 3, false); //just placeholder for stats
+                characters.push_back(new_char2);
+                field.at(i).at(j)->setCharacter(new_char2);
+                new_char2->setChar_tile(field.at(i).at(j));
+                break;
+            }
+            case '2':
+            {
+                field.at(i).at(j) = new Floor(i, j, ".");
+                index++;
+                Character* new_char3 = new Character("2", 3, 3, false); //just placeholder for stats
+                characters.push_back(new_char3);
+                field.at(i).at(j)->setCharacter(new_char3);
+                new_char3->setChar_tile(field.at(i).at(j));
+                break;
+            }
+            case '&':
+                level_ch = new Levelchanger(i, j, "&");
+                field.at(i).at(j) = level_ch;
+                level_ch->setLevel_dest(this);
+                index++;
                 break;
             }
         }
@@ -146,7 +180,7 @@ Level::Level(const Level &l):lvl_string(l.getLvl_string()), rows(l.getRows()), c
             if(tile_tmp == typeid(Floor)){
                 field.at(i).at(j) = new Floor(i, j, ".");
                 if(l.getField().at(i).at(j)->hasCharacter()){
-                    Character* new_char = new Character("X");
+                    Character* new_char = new Character("X", 5, 5); //just placeholder for stats
                     characters.push_back(new_char);
                     field.at(i).at(j)->setCharacter(new_char);
                     new_char->setChar_tile(field.at(i).at(j));
@@ -193,6 +227,13 @@ Level::Level(const Level &l):lvl_string(l.getLvl_string()), rows(l.getRows()), c
 
             if(tile_tmp == typeid(Ramp)){
                 field.at(i).at(j) = new Ramp(i, j, "<");
+                continue;
+            }
+            if(tile_tmp == typeid(Levelchanger)){
+
+                level_ch = new Levelchanger(i, j, "&");
+                field.at(i).at(j) = level_ch;
+                level_ch->setLevel_dest(this);
                 continue;
             }
         }
@@ -248,7 +289,7 @@ Level &Level::operator=(const Level &l)
             if(tile_tmp == typeid(Floor)){
                 field.at(i).at(j) = new Floor(i, j, ".");
                 if(l.getField().at(i).at(j)->hasCharacter()){
-                    Character* new_char = new Character("X");
+                    Character* new_char = new Character("X", 5, 5); //just placeholder for stats
                     characters.push_back(new_char);
                     field.at(i).at(j)->setCharacter(new_char);
                     new_char->setChar_tile(field.at(i).at(j));
@@ -297,6 +338,12 @@ Level &Level::operator=(const Level &l)
                 field.at(i).at(j) = new Ramp(i, j, "<");
                 continue;
             }
+            if(tile_tmp == typeid(Levelchanger)){
+                level_ch = new Levelchanger(i, j, "&");
+                field.at(i).at(j) = level_ch;
+                level_ch->setLevel_dest(this);
+                continue;
+            }
         }
     }
     if(door1_found && switch1_found){
@@ -322,12 +369,12 @@ void Level::placeCharacter(Character *c, int row, int col)
 
 int Level::getRows() const
 {
-    return rows;
+    return this->rows;
 }
 
 int Level::getCols() const
 {
-    return cols;
+    return this->cols;
 }
 
 std::vector<Character *> Level::getCharacters() const
@@ -350,10 +397,11 @@ void Level::setField(const std::vector<std::vector<Tile *> > &newField)
     field = newField;
 }
 
-void Level::setCharacters(const std::vector<Character *> &newCharacters)
+void Level::addCharacter(Character *newCharacter)
 {
-    characters = newCharacters;
+    characters.push_back(newCharacter);
 }
+
 
 void Level::setLvl_string(const std::string &newLvl_string)
 {
@@ -368,4 +416,27 @@ void Level::setRows(int newRows)
 void Level::setCols(int newCols)
 {
     cols = newCols;
+}
+
+bool Level::operator==(Level *lhs)
+{
+    if(this->field == lhs->getField() &&
+        this->characters == lhs->getCharacters() &&
+        this->lvl_string == lhs->getLvl_string() &&
+        this->rows == lhs->getRows() &&
+        this->cols == lhs->getCols()){
+
+        return true;
+    }
+    return false;
+}
+
+Levelchanger *Level::getLevel_ch() const
+{
+    return level_ch;
+}
+
+void Level::setLevel_ch(Levelchanger *newLevel_ch)
+{
+    level_ch = newLevel_ch;
 }

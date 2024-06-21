@@ -4,13 +4,15 @@
 #include "mainwindow.h"
 #include "dungeoncrawler.h"
 
+class MainWindow;
+
 class GraphicalUI : public AbstractController, public AbstractView
 {
 public:
     GraphicalUI(MainWindow* mw);
-    void draw(Level *level) override;
+    void draw() override;
     virtual ~GraphicalUI() = default;
-    Input move(char input) override;
+    Input_mov move() override;
 
 private:
     MainWindow* ui_m;

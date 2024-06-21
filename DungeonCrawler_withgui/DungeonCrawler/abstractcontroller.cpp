@@ -3,25 +3,26 @@
 
 AbstractController::AbstractController() {}
 
-Input AbstractController::move(char input)
+Input_mov AbstractController::move()
 {
-    while(true){
-        switch(input){
-        case 'w':
-            return up;
-            break;
-        case 's':
-            return down;
-            break;
-        case 'a':
-            return left;
-            break;
-        case 'd':
-            return right;
-            break;
-        case 'x':
-            return terminate;
-            break;
-        }
-    }
+//    char input = 'w';
+//    while(true){
+//        switch(input){
+//        case 'w':
+//            return up;
+//            break;
+//        case 's':
+//            return down;
+//            break;
+//        case 'a':
+//            return left;
+//            break;
+//        case 'd':
+//            return right;
+//            break;
+//        case 'x':
+//            return terminate;
+//            break;
+//        }
+//    }
 }

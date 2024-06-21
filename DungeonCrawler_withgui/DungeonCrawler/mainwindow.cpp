@@ -1,4 +1,4 @@
-
+#include <iostream>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "level.h"
@@ -6,8 +6,8 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QObject>
-#include <random.h>
 #include <QKeyEvent>
+#include <QStatusBar>
 
 
 
@@ -33,12 +33,6 @@ MainWindow::MainWindow(DungeonCrawler* dc, QWidget *parent)
 
             widget->setScaledContents(true);
 
-            std::string texture = level->getTile(row, col)->getTexture();
-            char* tex_c= texture.data();
-            if(*tex_c == '.'){
-                int flo_typ = getRandom(1,20);
-                level->getTile(row, col)->setFloor_tile_typ(flo_typ);
-            }
             l->addWidget(widget, row, col, Qt::AlignCenter);
         }
     }
@@ -143,9 +137,10 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
     }
 }
 
-void MainWindow::draw(Level* level)
+void MainWindow::draw()
 {
-
+    //
+    auto level = dc->getLevel();
     for (int row = 0; row < level->getRows(); row++)
     {
         for (int col = 0; col < level->getCols(); col++)
@@ -207,40 +202,59 @@ void MainWindow::draw(Level* level)
             else if(*tex_c=='\\'){
                 widget->setPixmap(QPixmap(":/textures/doors/door2.png"));
             }
+            else if(*tex_c=='&'){
+                widget->setPixmap(QPixmap(":textures/portal/portal3.png"));
+            }
             if(level->getTile(row, col)->hasCharacter())
             {
                 QLabel* charac = new QLabel(nullptr);
 
-                cur_pos_row=row;
-                cur_pos_col=col;
+                if(level->getTile(row,col)->getCharacter()->isHuman()){
+                    cur_pos_row=row;
+                    cur_pos_col=col;
 
-                charac->setStyleSheet("background: transparent; border-image: none;");
+                    charac->setStyleSheet("background: transparent; border-image: none;");
 
-                Input moved_dir = level->getTile(row, col)->getCharacter()->getMoveDirection();
+                    Input_mov moved_dir = level->getTile(row, col)->getCharacter()->getMoveDirection();
 
-                if(moved_dir==up){
-                    charac->setPixmap(QPixmap(":/textures/char/back/char_back_1.png"));
+                    if(moved_dir==up){
+                        charac->setPixmap(QPixmap(":/textures/char/back/char_back_1.png"));
+                    }
+                    if(moved_dir==down){
+                        charac->setPixmap(QPixmap(":/textures/char/front/char_front_1.png"));
+                    }
+                    if(moved_dir==right){
+                        charac->setPixmap(QPixmap(":/textures/char/right/char_right_1.png"));
+                    }
+                    if(moved_dir==left){
+                        charac->setPixmap(QPixmap(":/textures/char/left/char_left_1.png"));
+                    }
+                    if(moved_dir==terminate){
+                        charac->setPixmap(QPixmap(":/textures/char/front/char_front_2.png"));
+                    }
                 }
-                if(moved_dir==down){
-                    charac->setPixmap(QPixmap(":/textures/char/front/char_front_1.png"));
+                else{
+                    charac->setStyleSheet("background: transparent; border-image: none;");
+
+                    if(level->getTile(row,col)->getCharacter()->getTexture()=="1"){
+                        charac->setPixmap(QPixmap(":/textures/zombie/zombie_left.png"));
+                    }
+                    if(level->getTile(row,col)->getCharacter()->getTexture()=="2"){
+                        charac->setPixmap(QPixmap(":/textures/zombie/zombie_right.png"));
+                    }
                 }
-                if(moved_dir==right){
-                    charac->setPixmap(QPixmap(":/textures/char/right/char_right_1.png"));
-                }
-                if(moved_dir==left){
-                    charac->setPixmap(QPixmap(":/textures/char/left/char_left_1.png"));
-                }
-                if(moved_dir==terminate){
-                     charac->setPixmap(QPixmap(":/textures/char/front/char_front_2.png"));
-                }
-                charac->setFixedSize(55,55);
+
+                charac->setFixedSize(75,75);
                 charac->setScaledContents(true);
                 charac->setParent(nullptr);
                 ui_m->tiles->addWidget(charac, row, col, Qt::AlignCenter);
 
+                characters.push_back(std::make_pair(row,col));
+
                 if(*tex_c=='_'){
                     charac->lower();
                 }
+
             }
         }
     }
@@ -261,114 +275,87 @@ void MainWindow::draw(Level* level)
             widget->setFixedSize(opt*0.80, opt*0.80);
         }
     }
+    QString HP = QString::number(dc->getLevel()->getCharacters().at(0)->getHitpoints());
+    QString strength = QString::number(dc->getLevel()->getCharacters().at(0)->getStrength());
+    QString stamina = QString::number(dc->getLevel()->getCharacters().at(0)->getStamina());
 
+    ui_m->statusBar->showMessage(QString("HP: %1  Strength: %2  Stamina: %3").arg(HP, strength, stamina));
+    ui_m->statusBar->setStyleSheet("background-color: rgb(255, 255, 255); border-image: none;"); // for Transparent Backgroung :  background: transparent;
 }
 
 void MainWindow::remove_exis_char()
 {
-    QWidget* widget = ui_m->tiles->itemAtPosition(cur_pos_row,cur_pos_col)->widget();
-    ui_m->tiles->removeWidget(widget);
-    widget->setParent(nullptr);
-    delete widget;
+    for(auto pos:characters){
+        QWidget* widget = ui_m->tiles->itemAtPosition(pos.first,pos.second)->widget();
+        ui_m->tiles->removeWidget(widget);
+        widget->setParent(nullptr);
+        delete widget;
+        characters.erase(characters.begin());
+    }
 }
 
 void MainWindow::on_upleft_clicked()
 {
     remove_exis_char();
-    if(dc->turn(up)){
-        if(!(dc->turn(left))){
-            dc->turn(down);
-            dc->turn(terminate);
-        }
-    }
-    else if(dc->turn(left)){
-        if(!(dc->turn(up))){
-            dc->turn(right);
-            dc->turn(terminate);
-        }
-    }
-    this->draw(dc->getLevel());
+    LastClicked = upleft;
+    dc->turn();
+    this->draw();
 }
 
 void MainWindow::on_upright_clicked()
 {
     remove_exis_char();
-    if(dc->turn(up)){
-        if(!(dc->turn(right))){
-            dc->turn(down);
-            dc->turn(terminate);
-        }}
-    else if(dc->turn(right)){
-        if(!(dc->turn(up))){
-            dc->turn(left);
-            dc->turn(terminate);
-        }
-    }
-    this->draw(dc->getLevel());
+    LastClicked = upright;
+    dc->turn();
+    this->draw();
 }
 
 void MainWindow::on_up_clicked()
 {
     remove_exis_char();
-    if(!(dc->turn(up)))dc->turn(terminate);
-    this->draw(dc->getLevel());
+    LastClicked = up;
+    dc->turn();
+    this->draw();
 }
 
 void MainWindow::on_left_clicked()
 {
     remove_exis_char();
-    if(!(dc->turn(left)))dc->turn(terminate);
-    this->draw(dc->getLevel());
+    LastClicked = left;
+    dc->turn();
+    this->draw();
 }
 
 void MainWindow::on_right_clicked()
 {
     remove_exis_char();
-    if(!(dc->turn(right)))dc->turn(terminate);
-    this->draw(dc->getLevel());
+    LastClicked = right;
+    dc->turn();
+    this->draw();
 }
 
 void MainWindow::on_downright_clicked()
 {
     remove_exis_char();
-    if(dc->turn(down)){
-        if(!(dc->turn(right))){
-            dc->turn(up);
-            dc->turn(terminate);
-        }
-    }
-    else if(dc->turn(right)){
-        if(!(dc->turn(down))){
-            dc->turn(left);
-            dc->turn(terminate);
-        }
-    }
-    this->draw(dc->getLevel());
+    LastClicked = downright;
+    dc->turn();
+    this->draw();
 }
 
 void MainWindow::on_downleft_clicked()
 {
     remove_exis_char();
-    if(dc->turn(down)){
-        if(!(dc->turn(left))){
-            dc->turn(up);
-            dc->turn(terminate);
-        }
-    }
-    else if(dc->turn(left)){
-        if(!(dc->turn(down))){
-            dc->turn(right);
-            dc->turn(terminate);
-        }
-    }
-    this->draw(dc->getLevel());
+    LastClicked = downleft;
+    dc->turn();
+    this->draw();
 }
 
 void MainWindow::on_down_clicked()
 {
     remove_exis_char();
-    if(!(dc->turn(down)))dc->turn(terminate);
-    this->draw(dc->getLevel());
+    LastClicked = down;
+    dc->turn();
+    this->draw();
 }
 
 
@@ -376,25 +363,30 @@ void MainWindow::on_turn_clicked()
 {
     remove_exis_char();
 
-    Input curr_Direction = level->getTile(cur_pos_row, cur_pos_col)->getCharacter()->getMoveDirection();
+    Input_mov curr_Direction = dc->getLevel()->getTile(cur_pos_row, cur_pos_col)->getCharacter()->getMoveDirection();
 
     switch (curr_Direction) {
     case up:
-        level->getTile(cur_pos_row, cur_pos_col)->getCharacter()->setMoveDirection(left);
+        dc->getLevel()->getTile(cur_pos_row, cur_pos_col)->getCharacter()->setMoveDirection(left);
         break;
     case down:
-        level->getTile(cur_pos_row, cur_pos_col)->getCharacter()->setMoveDirection(right);
+        dc->getLevel()->getTile(cur_pos_row, cur_pos_col)->getCharacter()->setMoveDirection(right);
         break;
     case right:
-        level->getTile(cur_pos_row, cur_pos_col)->getCharacter()->setMoveDirection(up);
+        dc->getLevel()->getTile(cur_pos_row, cur_pos_col)->getCharacter()->setMoveDirection(up);
         break;
     case left:
-        level->getTile(cur_pos_row, cur_pos_col)->getCharacter()->setMoveDirection(down);
+        dc->getLevel()->getTile(cur_pos_row, cur_pos_col)->getCharacter()->setMoveDirection(down);
         break;
     case terminate:
-        level->getTile(cur_pos_row, cur_pos_col)->getCharacter()->setMoveDirection(right);
+        dc->getLevel()->getTile(cur_pos_row, cur_pos_col)->getCharacter()->setMoveDirection(right);
         break;
     }
-    this->draw(dc->getLevel());
+    this->draw();
+}
+
+Input_mov MainWindow::getLastClicked() const
+{
+    return LastClicked;
 }
 

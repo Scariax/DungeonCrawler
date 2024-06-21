@@ -2,6 +2,7 @@
 #include "dungeoncrawler.h"
 #include "mainwindow.h"
 #include "graphicalui.h"
+#include "level.h"
 
 #include <iostream>
 
@@ -11,14 +12,27 @@ int main(int argc, char *argv[])
 {
     const std::string l={
         "##########"
-        "#O.......#"
-        "#...<....#"
-        "#..___...#"
-        "#..___..X#"
-        "#........#"
+        "#O...#.&.#"
+        "#...<#...#"
+        "#..__#...#"
+        "#..__#...#"
+        "#...X#...#"
         "######-###"
-        "#O.......#"
+        "#O...2...#"
         "#...?....#"
+        "##########"
+    };
+
+    const std::string l_n{
+        "##########"
+        "#O.......#"
+        "#...<..###"
+        "#..___.#<#"
+        "#&...###.#"
+        "#....#...#"
+        "######-###"
+        "#O..2....#"
+        "#.......?#"
         "##########"
     };
 
@@ -28,19 +42,28 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     StartScreen s;
-    s.show();
+    s.showFullScreen();
     a.exec();
 
-    Level* level = new Level(rows, cols, l);
-    auto dungeon = new DungeonCrawler(level);
+
+    auto dungeon = new DungeonCrawler(rows, cols, l);
+
+    Level* level_n = new Level(rows, cols, l_n);
+
+    dungeon->push_level_back(level_n);
 
     MainWindow w(dungeon, nullptr);
 
     GraphicalUI* UI = new GraphicalUI(&w);
-    UI->draw(level);
-    w.show();
+
+    dungeon->setGr_ui(UI);
+
+    UI->draw();
+
+    w.showFullScreen();
     a.exec();
 
     delete dungeon;
+    delete UI;
     return 0;
 }
