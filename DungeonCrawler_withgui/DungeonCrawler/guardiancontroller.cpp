@@ -40,3 +40,8 @@ Input_mov GuardianController::move()
     }
 }
 
+GuardianController::~GuardianController()
+{
+    result.clear();
+}
+

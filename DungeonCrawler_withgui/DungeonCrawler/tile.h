@@ -31,6 +31,7 @@ public:
 private:
     int portal_type;
     int floor_tile_typ;
+
     std::string texture;
     Character* character;
     const int row;

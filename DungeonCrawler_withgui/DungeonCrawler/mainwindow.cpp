@@ -1,4 +1,3 @@
-#include <iostream>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "level.h"
@@ -8,7 +7,7 @@
 #include <QObject>
 #include <QKeyEvent>
 #include <QStatusBar>
-
+#include <QMessageBox>
 
 
 MainWindow::MainWindow(DungeonCrawler* dc, QWidget *parent)
@@ -140,16 +139,36 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
 void MainWindow::draw()
 {
     //
+    const int w = ui_m->centralwidget->width() / level->getRows();
+    const int h = ui_m->centralwidget->height() / level->getCols();
+
+    const int opt = std::min(w, h);
+
     auto level = dc->getLevel();
     for (int row = 0; row < level->getRows(); row++)
     {
         for (int col = 0; col < level->getCols(); col++)
         {
-            QWidget* widget1 = ui_m->tiles->itemAtPosition(row, col)->widget();
+            auto tile = level->getTile(row, col);
+
+            QLayoutItem* item = ui_m->tiles->itemAtPosition(row, col);
+            if (!item){
+                QLabel* widget = new QLabel(nullptr);
+
+                widget->setScaledContents(true);
+
+                ui_m->tiles->addWidget(widget, row, col, Qt::AlignCenter);
+
+                item = ui_m->tiles->itemAtPosition(row, col);
+            }
+
+            QWidget* widget1 = item->widget();
+            if (!widget1) continue;
 
             QLabel* widget = qobject_cast<QLabel*>(widget1);
 
-            std::string texture = level->getTile(row, col)->getTexture();
+            std::string texture = tile->getTexture();
+            if (texture.empty()) continue; // Sicherstellen, dass die Textur gültig ist
             char* tex_c= texture.data();
 
             int tmp = level->getTile(row, col)->getFloor_tile_typ();
@@ -158,16 +177,16 @@ void MainWindow::draw()
                 if(tmp%5 == 0){
                     widget->setPixmap(QPixmap(":/textures/floor/floor1.png"));
                 }
-                if(tmp%5 ==1){
+                if(tmp%5 == 1){
                     widget->setPixmap(QPixmap(":/textures/floor/floor2.png"));
                 }
-                if(tmp%5 ==2){
+                if(tmp%5 == 2){
                     widget->setPixmap(QPixmap(":/textures/floor/floor3.png"));
                 }
-                if(tmp%5 ==3){
+                if(tmp%5 == 3){
                     widget->setPixmap(QPixmap(":/textures/floor/floor4.png"));
                 }
-                if(tmp%5 ==4){
+                if(tmp%5 == 4){
                     widget->setPixmap(QPixmap(":/textures/floor/floor5.png"));
                 }
             }
@@ -205,6 +224,9 @@ void MainWindow::draw()
             else if(*tex_c=='&'){
                 widget->setPixmap(QPixmap(":textures/portal/portal3.png"));
             }
+            else if(*tex_c=='W'){
+                widget->setPixmap(QPixmap(":/textures/chest.png"));
+            }
             if(level->getTile(row, col)->hasCharacter())
             {
                 QLabel* charac = new QLabel(nullptr);
@@ -236,10 +258,14 @@ void MainWindow::draw()
                 else{
                     charac->setStyleSheet("background: transparent; border-image: none;");
 
-                    if(level->getTile(row,col)->getCharacter()->getTexture()=="1"){
+                    Input_mov moved_dir = level->getTile(row, col)->getCharacter()->getMoveDirection();
+                    if(moved_dir==right){
+                        charac->setPixmap(QPixmap(":/textures/zombie/zombie_right.png"));
+                    }
+                    else if(moved_dir==left){
                         charac->setPixmap(QPixmap(":/textures/zombie/zombie_left.png"));
                     }
-                    if(level->getTile(row,col)->getCharacter()->getTexture()=="2"){
+                    else{
                         charac->setPixmap(QPixmap(":/textures/zombie/zombie_right.png"));
                     }
                 }
@@ -258,30 +284,39 @@ void MainWindow::draw()
             }
         }
     }
-
-    const int w = ui_m->centralwidget->width() / level->getRows();
-    const int h = ui_m->centralwidget->height() / level->getCols();
-
-    const int opt = std::min(w, h);
-
-
     ui_m->verticalLayout->setContentsMargins(opt,opt*1.5,opt,opt*0.5);
 
     for (int row = 0; row < level->getRows(); row++)
     {
         for (int col = 0; col < level->getCols(); col++)
         {
-            QWidget* widget = ui_m->tiles->itemAtPosition(row, col)->widget();
-            widget->setFixedSize(opt*0.80, opt*0.80);
+            QLayoutItem* item = ui_m->tiles->itemAtPosition(row, col);
+            if (!item) continue;
+
+            QWidget* widget = item->widget();
+            if (!widget) continue;
+
+            widget->setFixedSize(opt * 0.80, opt * 0.80);
         }
     }
-    QString HP = QString::number(dc->getLevel()->getCharacters().at(0)->getHitpoints());
-    QString strength = QString::number(dc->getLevel()->getCharacters().at(0)->getStrength());
-    QString stamina = QString::number(dc->getLevel()->getCharacters().at(0)->getStamina());
+
+    QString HP;
+    QString strength;
+    QString stamina;
+
+    for(auto chara : dc->getLevel()->getCharacters()){
+        if(chara ->isHuman()){
+            HP = QString::number(chara->getHitpoints());
+            strength = QString::number(chara->getStrength());
+            stamina = QString::number(chara->getStamina());
+        }
+    }
 
     ui_m->statusBar->showMessage(QString("HP: %1  Strength: %2  Stamina: %3").arg(HP, strength, stamina));
-    ui_m->statusBar->setStyleSheet("background-color: rgb(255, 255, 255); border-image: none;"); // for Transparent Backgroung :  background: transparent;
+    ui_m->statusBar->setStyleSheet("background-color: rgb(255, 255, 255); border-image: none;");
+
 }
+
 
 void MainWindow::remove_exis_char()
 {
@@ -290,7 +325,23 @@ void MainWindow::remove_exis_char()
         ui_m->tiles->removeWidget(widget);
         widget->setParent(nullptr);
         delete widget;
-        characters.erase(characters.begin());
+    }
+    characters.clear();
+}
+
+void MainWindow::check_Won()
+{
+    if(dc->getLootchest_found()){
+        QMessageBox msgBox;
+        msgBox.setText("You have reached the lootchest,  YOU WON !!");
+        msgBox.exec();
+        QApplication::quit();
+    }
+    if(!(dc->isHuman_alive())){
+        QMessageBox msgBox;
+        msgBox.setText("You Died,  Better Luck Next time !!");
+        msgBox.exec();
+        QApplication::quit();
     }
 }
 
@@ -299,6 +350,7 @@ void MainWindow::on_upleft_clicked()
     remove_exis_char();
     LastClicked = upleft;
     dc->turn();
+    check_Won();
     this->draw();
 }
 
@@ -307,6 +359,7 @@ void MainWindow::on_upright_clicked()
     remove_exis_char();
     LastClicked = upright;
     dc->turn();
+    check_Won();
     this->draw();
 }
 
@@ -315,6 +368,7 @@ void MainWindow::on_up_clicked()
     remove_exis_char();
     LastClicked = up;
     dc->turn();
+    check_Won();
     this->draw();
 }
 
@@ -323,6 +377,7 @@ void MainWindow::on_left_clicked()
     remove_exis_char();
     LastClicked = left;
     dc->turn();
+    check_Won();
     this->draw();
 }
 
@@ -331,6 +386,7 @@ void MainWindow::on_right_clicked()
     remove_exis_char();
     LastClicked = right;
     dc->turn();
+    check_Won();
     this->draw();
 }
 
@@ -339,6 +395,7 @@ void MainWindow::on_downright_clicked()
     remove_exis_char();
     LastClicked = downright;
     dc->turn();
+    check_Won();
     this->draw();
 }
 
@@ -347,6 +404,7 @@ void MainWindow::on_downleft_clicked()
     remove_exis_char();
     LastClicked = downleft;
     dc->turn();
+    check_Won();
     this->draw();
 }
 
@@ -355,6 +413,7 @@ void MainWindow::on_down_clicked()
     remove_exis_char();
     LastClicked = down;
     dc->turn();
+    check_Won();
     this->draw();
 }
 
@@ -362,7 +421,9 @@ void MainWindow::on_down_clicked()
 void MainWindow::on_turn_clicked()
 {
     remove_exis_char();
-
+    LastClicked = terminate;
+    dc->turn();
+    check_Won();
     Input_mov curr_Direction = dc->getLevel()->getTile(cur_pos_row, cur_pos_col)->getCharacter()->getMoveDirection();
 
     switch (curr_Direction) {
@@ -380,6 +441,8 @@ void MainWindow::on_turn_clicked()
         break;
     case terminate:
         dc->getLevel()->getTile(cur_pos_row, cur_pos_col)->getCharacter()->setMoveDirection(right);
+        break;
+    default:
         break;
     }
     this->draw();

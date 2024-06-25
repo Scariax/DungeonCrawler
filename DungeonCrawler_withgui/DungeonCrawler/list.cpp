@@ -1,13 +1,13 @@
 #include "list.h"
+#include <stdexcept>
 
 
 
 List::List(): Start(nullptr),End(nullptr),no_of_data(0) {}
 
 List::~List(){
-    while(size()!=0){
-        delete Start;
-        this->pop_front();
+    while(!empty()){
+        pop_front();
     }
 }
 
@@ -46,12 +46,14 @@ void List::pop_back()
     }
     else{
         if(size()==1){
+            delete Start;
             Start=nullptr;
             End =nullptr;
         }
         else{
             data* tmp = End->prev;
             tmp->next=nullptr;
+            delete End;
             End = tmp;
         }
         no_of_data--;
@@ -66,13 +68,15 @@ void List::pop_front()
     }
     else{
         if(size()==1){
-            End =nullptr;
-            Start =nullptr;
+            delete Start;
+            End = nullptr;
+            Start = nullptr;
         }
         else{
             data* tmp = Start->next;
-            tmp->prev=nullptr;
+            delete tmp->prev;
             Start = tmp;
+            Start->prev =nullptr;
         }
         no_of_data--;
     }
@@ -97,7 +101,7 @@ void List::remove(Level *lvl)
         data* tmp = Start;
         bool removed{false};
         for(size_t i=0; i<this->size(); i++){
-            if(tmp->level == lvl){
+            if(*(tmp->level) == *lvl){
                 data* tmp_n = tmp->next;
                 data* tmp_p = tmp->prev;
                 tmp_p->next = tmp_n;
@@ -140,24 +144,14 @@ List::iterator::iterator(data *poi, List* par): pointer(poi), parent(par)
 
 List::iterator List::iterator::operator++()
 {
-    if(this->getPointer()==nullptr){
-        throw std::invalid_argument("invalid element");
-    }
-    else{
-        data* tmp = this->pointer->next;
-        if(tmp==nullptr){
-            throw std::invalid_argument("The end of the list!");
-        }
-        else{
-            return List::iterator(tmp,parent);
-        }
-    }
+    data* tmp = this->pointer->next;
+    return List::iterator(tmp,parent);
 }
 
 List::iterator List::iterator::operator--()
 {
     if(this->getPointer()==nullptr){
-        throw std::invalid_argument("invalid element");
+        return List::iterator(parent->End,parent);
     }
     else{
         data* tmp = this->pointer->prev;

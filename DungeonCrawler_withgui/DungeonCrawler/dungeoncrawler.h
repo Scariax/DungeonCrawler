@@ -2,7 +2,6 @@
 #define DUNGEONCRAWLER_H
 #include "level.h"
 #include "list.h"
-#include "graphicalui.h"
 
 class GraphicalUI;
 
@@ -21,10 +20,18 @@ public:
 
     void setGr_ui(GraphicalUI *newGr_ui);
 
+    bool getLootchest_found() const;
+
+    void check_alive();
+
+    bool isHuman_alive() const;
+
 private:
     Level* level;
     List list_of_levels;
     GraphicalUI* gr_ui;
+    bool lootchest_found;
+    bool human_alive;
 
 };
 

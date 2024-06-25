@@ -18,6 +18,7 @@ class AbstractController
 public:
     AbstractController();
     virtual Input_mov move() = 0;
+    virtual ~AbstractController();
 };
 
 #endif // ABSTRACTCONTROLLER_H

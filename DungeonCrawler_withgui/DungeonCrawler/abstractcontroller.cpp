@@ -1,5 +1,4 @@
 #include "abstractcontroller.h"
-#include <iostream>
 
 AbstractController::AbstractController() {}
 
@@ -25,4 +24,8 @@ Input_mov AbstractController::move()
 //            break;
 //        }
 //    }
+}
+
+AbstractController::~AbstractController(){
+
 }

@@ -8,6 +8,7 @@ class StationeryController: public AbstractController
 public:
     StationeryController();
     Input_mov move() override;
+    ~StationeryController();
 };
 
 #endif // STATIONERYCONTROLLER_H

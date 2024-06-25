@@ -9,3 +9,8 @@ Input_mov StationeryController::move()
 {
     return terminate;
 }
+
+StationeryController::~StationeryController()
+{
+
+}

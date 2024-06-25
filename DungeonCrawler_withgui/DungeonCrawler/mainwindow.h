@@ -8,6 +8,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <vector>
+#include <QProgressBar>
 
 
 QT_BEGIN_NAMESPACE
@@ -30,6 +31,7 @@ public:
     void resizeEvent(QResizeEvent *event) override;
     void draw();
     void remove_exis_char();
+    void check_Won();
     void keyPressEvent(QKeyEvent *event) override;
 
 //    std::string getLastClicked() const;
@@ -67,6 +69,9 @@ private:
 
     std::vector<std::pair<int,int>> characters;
     Input_mov LastClicked;
+
+    QStatusBar* statusbar;
+    QProgressBar* mainCharacterHp;
 };
 
 #endif // MAINWINDOW_H

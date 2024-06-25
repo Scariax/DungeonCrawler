@@ -3,9 +3,6 @@
 #include "mainwindow.h"
 #include "graphicalui.h"
 #include "level.h"
-
-#include <iostream>
-
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -14,8 +11,8 @@ int main(int argc, char *argv[])
         "##########"
         "#O...#.&.#"
         "#...<#...#"
-        "#..__#...#"
-        "#..__#...#"
+        "#..__#.2.#"
+        "#11__#.1.#"
         "#...X#...#"
         "######-###"
         "#O...2...#"
@@ -25,14 +22,14 @@ int main(int argc, char *argv[])
 
     const std::string l_n{
         "##########"
-        "#O.......#"
+        "#O..1.1.1#"
         "#...<..###"
-        "#..___.#<#"
+        "#..___.#W#"
         "#&...###.#"
-        "#....#...#"
+        "#....#.1.#"
         "######-###"
-        "#O..2....#"
-        "#.......?#"
+        "#O......1#"
+        "#...2...?#"
         "##########"
     };
 
@@ -46,7 +43,7 @@ int main(int argc, char *argv[])
     a.exec();
 
 
-    auto dungeon = new DungeonCrawler(rows, cols, l);
+    auto* dungeon = new DungeonCrawler(rows, cols, l);
 
     Level* level_n = new Level(rows, cols, l_n);
 
@@ -63,7 +60,7 @@ int main(int argc, char *argv[])
     w.showFullScreen();
     a.exec();
 
+    //delete level_n;
     delete dungeon;
-    delete UI;
     return 0;
 }

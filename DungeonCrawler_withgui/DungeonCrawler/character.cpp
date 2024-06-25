@@ -1,6 +1,9 @@
 #include "character.h"
+#include "stationerycontroller.h"
+#include "guardiancontroller.h"
+#include "tile.h"
 
-Character::Character(std::string texture, int strength, int stamina, bool hum):texture(texture), char_tile(nullptr), moveDirection(down), strength(strength), stamina(stamina), hitpoints(getMaxHP()),human(hum) {
+Character::Character(std::string texture, int strength, int stamina, bool hum):texture(texture), char_tile(nullptr), moveDirection(down), human(hum), strength(strength), stamina(stamina),hitpoints(getMaxHP()),alive(true) {
     if(!human){
         if(texture == "1"){
             abstrCon = new StationeryController();
@@ -9,6 +12,10 @@ Character::Character(std::string texture, int strength, int stamina, bool hum):t
             abstrCon = new GuardianController();
         }
     }
+}
+
+Character::~Character(){
+
 }
 
 std::string Character::getTexture() const
@@ -79,4 +86,14 @@ int Character::getHitpoints() const
 void Character::setHitpoints(int newHitpoints)
 {
     hitpoints = newHitpoints;
+}
+
+void Character::setAlive(bool newAlive)
+{
+    alive = newAlive;
+}
+
+bool Character::isAlive() const
+{
+    return alive;
 }

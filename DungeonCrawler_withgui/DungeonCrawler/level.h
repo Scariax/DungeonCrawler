@@ -3,8 +3,8 @@
 #include "string"
 #include <vector>
 #include "tile.h"
-#include "levelchanger.h"
-#include "list.h"
+
+class List;
 
 class Levelchanger;
 
@@ -31,6 +31,7 @@ public:
     void setField(const std::vector<std::vector<Tile *> > &newField);
 
     void addCharacter(Character* newCharacter);
+    void removeCharacter(int ind);
 
     void setLvl_string(const std::string &newLvl_string);
 
@@ -38,7 +39,9 @@ public:
 
     void setCols(int newCols);
 
-    bool operator==(Level* lhs);
+    bool operator==(Level lhs);
+    bool operator!=(Level lhs);
+
     Levelchanger *getLevel_ch() const;
     void setLevel_ch(Levelchanger *newLevel_ch);
 

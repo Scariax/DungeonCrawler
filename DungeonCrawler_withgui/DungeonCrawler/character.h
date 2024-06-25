@@ -2,8 +2,6 @@
 #define CHARACTER_H
 #include <string>
 #include "abstractcontroller.h"
-#include "stationerycontroller.h"
-#include "guardiancontroller.h"
 
 class Tile;
 
@@ -14,7 +12,7 @@ public:
 
     std::string getTexture() const;
     Input_mov move();
-    virtual ~Character() = default;
+    ~Character();
     Tile *getChar_tile() const;
     void setChar_tile(Tile *newChar_tile);
     void setMoveDirection(Input_mov newMoveDirection);
@@ -31,15 +29,23 @@ public:
     int getHitpoints() const;
     void setHitpoints(int newHitpoints);
 
+    bool isAlive() const;
+
+    void setAlive(bool newAlive);
+
 private:
     std::string texture;
     Tile* char_tile;
     AbstractController* abstrCon;
     Input_mov moveDirection;
+
     bool human;
+
     int strength;
     int stamina;
     int hitpoints;
+
+    bool alive;
 };
 
 #endif // CHARACTER_H

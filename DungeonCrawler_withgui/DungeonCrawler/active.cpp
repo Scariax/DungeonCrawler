@@ -5,16 +5,6 @@ Active::Active()
 
 }
 
-/*Active::~Active(){ //when using it like this, it creates a pointer error -> valgrind has 0 errors detected when not using this
-    if(list_of_Passive.size()<=0){
-        return;
-    }
-    for(auto x:list_of_Passive){
-        delete x;
-    }
-    list_of_Passive.clear();
-}*/
-
 void Active::attach(Passive* p)
 {
     for(auto passive: list_of_Passive){
