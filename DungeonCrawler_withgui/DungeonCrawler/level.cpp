@@ -123,6 +123,16 @@ Level::Level(int row, int col, std::string lvl):level_ch(nullptr), lvl_string(lv
                 new_char3->setChar_tile(field.at(i).at(j));
                 break;
             }
+            case '3':
+            {
+                field.at(i).at(j) = new Floor(i, j, ".");
+                index++;
+                Character* new_char3 = new Character("3", 1, 1, false); //just placeholder for stats
+                characters.push_back(new_char3);
+                field.at(i).at(j)->setCharacter(new_char3);
+                new_char3->setChar_tile(field.at(i).at(j));
+                break;
+            }
             case '&':
             {
                 level_ch = new Levelchanger(i, j, "&");

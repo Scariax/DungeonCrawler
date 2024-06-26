@@ -8,7 +8,7 @@
 class GuardianController: public AbstractController
 {
 public:
-    GuardianController();
+    GuardianController(std::string movem_str);
     Input_mov move() override;
     ~GuardianController();
 

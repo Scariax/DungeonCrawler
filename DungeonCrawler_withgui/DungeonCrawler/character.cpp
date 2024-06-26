@@ -9,7 +9,10 @@ Character::Character(std::string texture, int strength, int stamina, bool hum):t
             abstrCon = new StationeryController();
         }
         if(texture == "2"){
-            abstrCon = new GuardianController();
+            abstrCon = new GuardianController("66444466");
+        }
+        if(texture == "3"){
+            abstrCon = new GuardianController("2288664444668822");
         }
     }
 }

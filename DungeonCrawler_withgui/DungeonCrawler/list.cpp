@@ -100,7 +100,8 @@ void List::remove(Level *lvl)
     else{
         data* tmp = Start;
         bool removed{false};
-        for(size_t i=0; i<this->size(); i++){
+        size_t i = this->size();
+        while(i>0){
             if(*(tmp->level) == *lvl){
                 data* tmp_n = tmp->next;
                 data* tmp_p = tmp->prev;
@@ -108,7 +109,7 @@ void List::remove(Level *lvl)
                 tmp_n->prev = tmp_p;
                 delete tmp;
                 tmp = tmp_n;
-                no_of_data--;
+                this->no_of_data--;
                 removed=true;
             }
         }
@@ -144,23 +145,25 @@ List::iterator::iterator(data *poi, List* par): pointer(poi), parent(par)
 
 List::iterator List::iterator::operator++()
 {
+    if(*this == parent->end()){
+        return *this;
+    }
     data* tmp = this->pointer->next;
-    return List::iterator(tmp,parent);
+    return List::iterator(tmp,this->getParent());
 }
 
 List::iterator List::iterator::operator--()
 {
-    if(this->getPointer()==nullptr){
-        return List::iterator(parent->End,parent);
+    if(*this == parent->end()){
+        return List::iterator(parent->End,this->getParent());
+    }
+    else if(*this == parent->begin()){
+        throw std::invalid_argument("The first element of the list!");
     }
     else{
         data* tmp = this->pointer->prev;
-        if(tmp==nullptr){
-            throw std::invalid_argument("The first element of the list!");
-        }
-        else{
-            return List::iterator(tmp,parent);
-        }
+        return List::iterator(tmp,this->getParent());
+
     }
 }
 

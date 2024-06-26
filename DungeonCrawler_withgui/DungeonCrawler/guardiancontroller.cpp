@@ -1,8 +1,7 @@
 #include "guardiancontroller.h"
 
 
-GuardianController::GuardianController(){
-    movem_str = "66444466";
+GuardianController::GuardianController(std::string movem_str){
     for (char c : movem_str) {
         if (isdigit(c)) {
             result.push_back(c - '0');
@@ -35,8 +34,6 @@ Input_mov GuardianController::move()
             return terminate;
             break;
         }
-
-
     }
 }
 

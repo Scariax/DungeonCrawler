@@ -17,7 +17,7 @@ MainWindow::MainWindow(DungeonCrawler* dc, QWidget *parent)
 {
     ui_m->setupUi(this);
 
-    this->setStyleSheet("background-color: rgb(0, 0, 0); border-image: url(:/textures/bloody_frame.png);");
+    ui_m->centralwidget->setStyleSheet("background-color: rgb(0, 0, 0); border-image: url(:/textures/bloody_frame.png);");
 
     ui_m->verticalLayout->setContentsMargins(10,100,10,10);
 
@@ -311,9 +311,17 @@ void MainWindow::draw()
             stamina = QString::number(chara->getStamina());
         }
     }
+    int HP_INT = HP.toInt();
 
     ui_m->statusBar->showMessage(QString("HP: %1  Strength: %2  Stamina: %3").arg(HP, strength, stamina));
-    ui_m->statusBar->setStyleSheet("background-color: rgb(255, 255, 255); border-image: none;");
+    if(HP_INT<10){
+        ui_m->statusBar->setStyleSheet("background-color: rgb(255, 0, 0); border-image: none;");
+    }else if(HP_INT<20){
+        ui_m->statusBar->setStyleSheet("background-color: rgb(255, 255, 0); border-image: none;");
+    }else{
+        ui_m->statusBar->setStyleSheet("background-color: rgb(0, 255, 0); border-image: none;");
+    }
+    ui_m->statusBar->setFixedWidth(HP_INT*30);
 
 }
 
@@ -350,8 +358,8 @@ void MainWindow::on_upleft_clicked()
     remove_exis_char();
     LastClicked = upleft;
     dc->turn();
-    check_Won();
     this->draw();
+    check_Won();
 }
 
 void MainWindow::on_upright_clicked()
@@ -359,8 +367,8 @@ void MainWindow::on_upright_clicked()
     remove_exis_char();
     LastClicked = upright;
     dc->turn();
-    check_Won();
     this->draw();
+    check_Won();
 }
 
 void MainWindow::on_up_clicked()
@@ -368,8 +376,8 @@ void MainWindow::on_up_clicked()
     remove_exis_char();
     LastClicked = up;
     dc->turn();
-    check_Won();
     this->draw();
+    check_Won();
 }
 
 void MainWindow::on_left_clicked()
@@ -377,8 +385,8 @@ void MainWindow::on_left_clicked()
     remove_exis_char();
     LastClicked = left;
     dc->turn();
-    check_Won();
     this->draw();
+    check_Won();
 }
 
 void MainWindow::on_right_clicked()
@@ -386,8 +394,8 @@ void MainWindow::on_right_clicked()
     remove_exis_char();
     LastClicked = right;
     dc->turn();
-    check_Won();
     this->draw();
+    check_Won();
 }
 
 void MainWindow::on_downright_clicked()
@@ -395,17 +403,17 @@ void MainWindow::on_downright_clicked()
     remove_exis_char();
     LastClicked = downright;
     dc->turn();
-    check_Won();
     this->draw();
+    check_Won();
 }
 
 void MainWindow::on_downleft_clicked()
 {
     remove_exis_char();
     LastClicked = downleft;
-    dc->turn();
-    check_Won();
+    dc->turn();  
     this->draw();
+    check_Won();
 }
 
 void MainWindow::on_down_clicked()
@@ -413,8 +421,8 @@ void MainWindow::on_down_clicked()
     remove_exis_char();
     LastClicked = down;
     dc->turn();
-    check_Won();
     this->draw();
+    check_Won();
 }
 
 
@@ -423,7 +431,7 @@ void MainWindow::on_turn_clicked()
     remove_exis_char();
     LastClicked = terminate;
     dc->turn();
-    check_Won();
+
     Input_mov curr_Direction = dc->getLevel()->getTile(cur_pos_row, cur_pos_col)->getCharacter()->getMoveDirection();
 
     switch (curr_Direction) {
@@ -446,6 +454,7 @@ void MainWindow::on_turn_clicked()
         break;
     }
     this->draw();
+    check_Won();
 }
 
 Input_mov MainWindow::getLastClicked() const
