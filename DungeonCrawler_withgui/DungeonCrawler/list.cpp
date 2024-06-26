@@ -98,17 +98,29 @@ void List::remove(Level *lvl)
         throw std::invalid_argument( "The list ist empty" );
     }
     else{
-        data* tmp = Start;
+        data* current = Start;
         bool removed{false};
-        size_t i = this->size();
-        while(i>0){
-            if(*(tmp->level) == *lvl){
-                data* tmp_n = tmp->next;
-                data* tmp_p = tmp->prev;
+//        size_t i = this->size();
+//        while(i>0){
+//            if(*(tmp->level) == *lvl){
+//                data* tmp_n = tmp->next;
+//                data* tmp_p = tmp->prev;
+//                tmp_p->next = tmp_n;
+//                tmp_n->prev = tmp_p;
+//                delete tmp;
+//                tmp = tmp_n;
+//                this->no_of_data--;
+//                removed=true;
+//                i--;
+//            }
+        while (current->next != nullptr) {
+            if(*(current->level) == *lvl){
+                data* tmp_n = current->next;
+                data* tmp_p = current->prev;
                 tmp_p->next = tmp_n;
                 tmp_n->prev = tmp_p;
-                delete tmp;
-                tmp = tmp_n;
+                delete current;
+                current = tmp_n;
                 this->no_of_data--;
                 removed=true;
             }

@@ -73,6 +73,31 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
         return;
     }
     switch(event->key()){
+
+    case(Qt::Key_W):
+    {
+        on_up_clicked();
+        break;
+    }
+
+    case(Qt::Key_A):
+    {
+        on_left_clicked();
+        break;
+    }
+
+    case(Qt::Key_D):
+    {
+        on_right_clicked();
+        break;
+    }
+
+    case(Qt::Key_S):
+    {
+        on_down_clicked();
+        break;
+    }
+
     case(Qt::Key_1):
     {
         on_downleft_clicked();
@@ -321,7 +346,7 @@ void MainWindow::draw()
     }else{
         ui_m->statusBar->setStyleSheet("background-color: rgb(0, 255, 0); border-image: none;");
     }
-    ui_m->statusBar->setFixedWidth(HP_INT*30);
+    ui_m->statusBar->setFixedWidth(HP_INT*43);
 
 }
 
