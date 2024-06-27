@@ -428,7 +428,6 @@ void Level::addCharacter(Character *newCharacter)
 
 void Level::removeCharacter(int ind)
 {
-    delete characters.at(ind);
     characters.erase(characters.begin()+ind);
 }
 
