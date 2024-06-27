@@ -9,7 +9,6 @@ Dungeoncrawler Premium:
 - more precise checking for unusual events
 - better performance due to removal of useless copies of objects
 - reduced valgrind issues
-- zombies can now be killed and will deal damage on any kind of tile
 - zombies should now not enter portals and break stuff
 - removed not needed classes to shorten code
 - moved more code from main.cpp into other classes for better structure
