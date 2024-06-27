@@ -100,30 +100,36 @@ void List::remove(Level *lvl)
     else{
         data* current = Start;
         bool removed{false};
-//        size_t i = this->size();
-//        while(i>0){
-//            if(*(tmp->level) == *lvl){
-//                data* tmp_n = tmp->next;
-//                data* tmp_p = tmp->prev;
-//                tmp_p->next = tmp_n;
-//                tmp_n->prev = tmp_p;
-//                delete tmp;
-//                tmp = tmp_n;
-//                this->no_of_data--;
-//                removed=true;
-//                i--;
-//            }
-        while (current->next != nullptr) {
-            if(*(current->level) == *lvl){
-                data* tmp_n = current->next;
-                data* tmp_p = current->prev;
-                tmp_p->next = tmp_n;
-                tmp_n->prev = tmp_p;
-                delete current;
-                current = tmp_n;
+        while (current != nullptr) {
+            if (*(current->level) == *lvl) {
+                if (current == Start && current == End) { // only 1 element
+                    delete current;
+                    Start = nullptr;
+                    End = nullptr;
+                }
+                else if (current == Start) { // first element
+                    Start = current->next;
+                    Start->prev = nullptr;
+                    delete current;
+                }
+                else if (current == End) { // last element
+                    End = current->prev;
+                    End->next = nullptr;
+                    delete current;
+                }
+                else {
+                    data* tmp_n = current->next;
+                    data* tmp_p = current->prev;
+                    tmp_p->next = tmp_n;
+                    tmp_n->prev = tmp_p;
+                    delete current;
+                }
+
                 this->no_of_data--;
-                removed=true;
+                removed = true;
+                break;
             }
+            current = current->next;
         }
         if(!removed){
             throw std::invalid_argument( "The element was not found!" );
