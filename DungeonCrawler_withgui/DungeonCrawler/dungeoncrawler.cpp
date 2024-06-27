@@ -100,7 +100,7 @@ bool DungeonCrawler::turn()
             {
                 dest_row-=1;
                 Tile* dest_tile = level->getTile(dest_row, dest_col);
-                if(dest_tile->getTexture()=="&"){
+                if(dest_tile->getTexture()=="&" && character->isHuman()){
                     level->removeCharacter(ind);
                     level = level->getLevel_ch()->getLevel_dest();
                     level->addCharacter(character);
@@ -112,7 +112,7 @@ bool DungeonCrawler::turn()
                     character->setMoveDirection(up);
                     Moved = true;
                 }
-                if(dest_tile->getTexture()=="&"){
+                if(dest_tile->getTexture()=="&" && character->isHuman()){
 
                     break;
                 }
@@ -123,7 +123,7 @@ bool DungeonCrawler::turn()
                 dest_row-=1;
                 dest_col-=1;
                 Tile* dest_tile = level->getTile(dest_row, dest_col);
-                if(dest_tile->getTexture()=="&"){
+                if(dest_tile->getTexture()=="&" && character->isHuman()){
                     level->removeCharacter(ind);
                     level = level->getLevel_ch()->getLevel_dest();
                     level->addCharacter(character);
@@ -135,7 +135,7 @@ bool DungeonCrawler::turn()
                     character->setMoveDirection(left);
                     Moved = true;
                 }
-                if(dest_tile->getTexture()=="&"){
+                if(dest_tile->getTexture()=="&" && character->isHuman()){
                     break;
                 }
                 continue;
@@ -145,7 +145,7 @@ bool DungeonCrawler::turn()
                 dest_row-=1;
                 dest_col+=1;
                 Tile* dest_tile = level->getTile(dest_row, dest_col);
-                if(dest_tile->getTexture()=="&"){
+                if(dest_tile->getTexture()=="&" && character->isHuman()){
                     level->removeCharacter(ind);
                     level = level->getLevel_ch()->getLevel_dest();
                     level->addCharacter(character);
@@ -157,7 +157,7 @@ bool DungeonCrawler::turn()
                     character->setMoveDirection(right);
                     Moved = true;
                 }
-                if(dest_tile->getTexture()=="&"){
+                if(dest_tile->getTexture()=="&" && character->isHuman()){
                     break;
                 }
                 continue;
@@ -166,7 +166,7 @@ bool DungeonCrawler::turn()
             {
                 dest_row+=1;
                 Tile* dest_tile = level->getTile(dest_row, dest_col);
-                if(dest_tile->getTexture()=="&"){
+                if(dest_tile->getTexture()=="&" && character->isHuman()){
                     level->removeCharacter(ind);
                     level = level->getLevel_ch()->getLevel_dest();
                     level->addCharacter(character);
@@ -178,7 +178,7 @@ bool DungeonCrawler::turn()
                     character->setMoveDirection(down);
                     Moved = true;
                 }
-                if(dest_tile->getTexture()=="&"){
+                if(dest_tile->getTexture()=="&" && character->isHuman()){
                     break;
                 }
                 continue;
@@ -188,7 +188,7 @@ bool DungeonCrawler::turn()
                 dest_row+=1;
                 dest_col+=1;
                 Tile* dest_tile = level->getTile(dest_row, dest_col);
-                if(dest_tile->getTexture()=="&"){
+                if(dest_tile->getTexture()=="&" && character->isHuman()){
                     level->removeCharacter(ind);
                     level = level->getLevel_ch()->getLevel_dest();
                     level->addCharacter(character);
@@ -200,7 +200,7 @@ bool DungeonCrawler::turn()
                     character->setMoveDirection(right);
                     Moved = true;
                 }
-                if(dest_tile->getTexture()=="&"){
+                if(dest_tile->getTexture()=="&" && character->isHuman()){
                     break;
                 }
                 continue;
@@ -210,7 +210,7 @@ bool DungeonCrawler::turn()
                 dest_row+=1;
                 dest_col-=1;
                 Tile* dest_tile = level->getTile(dest_row, dest_col);
-                if(dest_tile->getTexture()=="&"){
+                if(dest_tile->getTexture()=="&" && character->isHuman()){
                     level->removeCharacter(ind);
                     level = level->getLevel_ch()->getLevel_dest();
                     level->addCharacter(character);
@@ -222,7 +222,7 @@ bool DungeonCrawler::turn()
                     character->setMoveDirection(left);
                     Moved = true;
                 }
-                if(dest_tile->getTexture()=="&"){
+                if(dest_tile->getTexture()=="&" && character->isHuman()){
                     break;
                 }
                 continue;
@@ -231,7 +231,7 @@ bool DungeonCrawler::turn()
             {
                 dest_col+=1;
                 Tile* dest_tile = level->getTile(dest_row, dest_col);
-                if(dest_tile->getTexture()=="&"){
+                if(dest_tile->getTexture()=="&" && character->isHuman()){
                     level->removeCharacter(ind);
                     level = level->getLevel_ch()->getLevel_dest();
                     level->addCharacter(character);
@@ -243,7 +243,7 @@ bool DungeonCrawler::turn()
                     character->setMoveDirection(right);
                     Moved = true;
                 }
-                if(dest_tile->getTexture()=="&"){
+                if(dest_tile->getTexture()=="&" && character->isHuman()){
                     break;
                 }
                 continue;
@@ -252,7 +252,7 @@ bool DungeonCrawler::turn()
             {
                 dest_col-=1;
                 Tile* dest_tile = level->getTile(dest_row, dest_col);
-                if(dest_tile->getTexture()=="&"){
+                if(dest_tile->getTexture()=="&" && character->isHuman()){
                     level->removeCharacter(ind);
                     level = level->getLevel_ch()->getLevel_dest();
                     level->addCharacter(character);
@@ -264,7 +264,7 @@ bool DungeonCrawler::turn()
                     character->setMoveDirection(left);
                     Moved = true;
                 }
-                if(dest_tile->getTexture()=="&"){
+                if(dest_tile->getTexture()=="&" && character->isHuman()){
                     break;
                 }
                 continue;

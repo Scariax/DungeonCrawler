@@ -15,6 +15,25 @@ bool Portal::onLeave(Tile *destTile, Character *who)
 
 std::pair<bool, Tile *> Portal::onEnter(Character *who)
 {
+    if(this->hasCharacter()){
+        Character* present_char = this->getCharacter();
+        if(!who->isHuman() && !present_char->isHuman()){
+            return {false, destination};
+        }
+        if(present_char->getHitpoints() - who->getStrength() <= 0){
+            present_char->setAlive(false);
+        }
+        else{
+            present_char->setHitpoints(present_char->getHitpoints() - who->getStrength());
+            if(who->getHitpoints() - present_char->getStrength() <= 0){
+                who->setAlive(false);
+            }
+            else{
+                who->setHitpoints(who->getHitpoints() - present_char->getStrength());
+            }
+            return {false, destination};
+        }
+    }
     return {true, destination};
 }
 

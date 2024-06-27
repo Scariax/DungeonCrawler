@@ -20,7 +20,7 @@ Levelchanger::Levelchanger(int row, int col, std::string texture):Portal(row, co
 
 std::pair<bool, Tile *> Levelchanger::onEnter(Character *who)
 {
-    return {true, destination};
+    return {who->isHuman(), destination};
 }
 
 Levelchanger *Levelchanger::getDestination() const
