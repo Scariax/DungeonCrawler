@@ -70,6 +70,14 @@ bool Tile::moveTo(Tile* destTile, Character* who)
                 who->setChar_tile(por_dest);
                 return true;
             }
+            if(tempEnter.second->getTexture() == "S")
+            {
+                Tile* port_dest = tempEnter.second;
+                port_dest->setCharacter(who);
+                this->setCharacter(nullptr);
+                who->setChar_tile(port_dest);
+                return true;
+            }
         }
     }
     return false;

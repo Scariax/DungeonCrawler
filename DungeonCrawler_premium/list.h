@@ -2,6 +2,7 @@
 #define LIST_H
 
 #include <iostream>
+#include <stdexcept>
 
 template <typename T>
 class List {
@@ -48,10 +49,11 @@ public:
     void push_front(const T& data);
     void push_back(const T& data);
     void pop_front();
-    void remove(const T& data);
     void pop_back();
+    void remove(const T& data);
     bool is_empty() const;
     void print_list() const;
+    T second_to_last() const;
 
     Iterator begin() const;
     Iterator end() const;
@@ -174,6 +176,16 @@ typename List<T>::Iterator List<T>::begin() const {
 template <typename T>
 typename List<T>::Iterator List<T>::end() const {
     return Iterator(nullptr);
+}
+
+template <typename T>
+T List<T>::second_to_last() const {
+    if (Start == nullptr || Start->next == nullptr) {
+        return nullptr;
+    }
+
+    Node* current = End;
+    return current->prev->data;
 }
 
 #endif // LIST_H

@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
         "#...<#...#"
         "#..__#.3.#"
         "#11__#...#"
-        "#...X#...#"
+        "#..SX#...#"
         "######-###"
         "#O...2...#"
         "#...?....#"
@@ -24,12 +24,25 @@ int main(int argc, char* argv[])
         "##########"
         "#O..3...1#"
         "#...<..###"
-        "#..___.#W#"
-        "#&...###.#"
+        "#..___.#&#"
+        "#S...###.#"
         "#....#...#"
         "######-###"
         "#O......1#"
         "#...2...?#"
+        "##########"
+    };
+
+    const std::string l_2{
+        "##########"
+        "#O...#...#"
+        "#...<#...#"
+        "#..__#.3.#"
+        "#11__#...#"
+        "#..S.#...#"
+        "######-###"
+        "#O...2...#"
+        "#...?...W#"
         "##########"
     };
 
@@ -46,6 +59,7 @@ int main(int argc, char* argv[])
     GraphicalUI* UI = new GraphicalUI(&w);
     w.getDc()->setGr_ui(UI);
     w.getDc()->push_level_back(new Level(rows, cols, l_n));
+    w.getDc()->push_level_back(new Level(rows, cols, l_2));
 
     UI->draw();
 

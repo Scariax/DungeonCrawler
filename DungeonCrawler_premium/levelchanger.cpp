@@ -15,12 +15,12 @@ std::pair<bool, Tile*> LevelChanger::onEnter(Character* who)
     return {true, destination};
 }
 
-LevelChanger* LevelChanger::getDestination() const
+CharacterSet* LevelChanger::getDestination() const
 {
     return destination;
 }
 
-void LevelChanger::setDestination(LevelChanger* newDestination)
+void LevelChanger::setDestination(CharacterSet* newDestination)
 {
     destination = newDestination;
 }

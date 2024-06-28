@@ -12,6 +12,7 @@ SOURCES += \
     abstractcontroller.cpp \
     active.cpp \
     character.cpp \
+    characterset.cpp \
     door.cpp \
     dungeoncrawler.cpp \
     floor.cpp \
@@ -19,7 +20,6 @@ SOURCES += \
     guardiancontroller.cpp \
     level.cpp \
     levelchanger.cpp \
-    list.cpp \
     lootchest.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -38,6 +38,7 @@ HEADERS += \
     abstractcontroller.h \
     active.h \
     character.h \
+    characterset.h \
     door.h \
     dungeoncrawler.h \
     floor.h \

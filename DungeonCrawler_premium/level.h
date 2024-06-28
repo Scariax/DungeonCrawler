@@ -4,6 +4,7 @@
 #include <vector>
 #include "tile.h"
 #include "levelchanger.h"
+#include "characterset.h"
 
 class Level
 {
@@ -36,8 +37,12 @@ public:
     void setCharacters(const std::vector<Character *> &newCharacters);
 
     void removeCharacter(Character *c);
+    CharacterSet *getChar_set() const;
+    void setChar_set(CharacterSet *newChar_set);
+
 private:
     LevelChanger* level_ch;
+    CharacterSet* char_set;
     std::vector<std::vector<Tile*>> field;
     std::vector<Character*> characters;
     std::string lvl_string;

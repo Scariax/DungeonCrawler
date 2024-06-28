@@ -8,6 +8,7 @@
 #include "ramp.h"
 #include "random.h"
 #include "levelchanger.h"
+#include "characterset.h"
 
 #include <lootchest.h>
 
@@ -181,6 +182,14 @@ Level::Level(int row, int col, std::string lvl):
                 break;
             }
 
+            case'S':
+            {
+                char_set = new CharacterSet(i, j, "S");
+                field[i][j] = char_set;
+                index++;
+                break;
+            }
+
             default:
                 field[i][j] = new Wall(i, j, "#");
                 index++;
@@ -189,7 +198,7 @@ Level::Level(int row, int col, std::string lvl):
             if(door1_found && switch1_found){
                 switch1->attach(door1);
                 door1_found = false;
-                switch1_found = false;
+                //switch1_found = false;
             }
         }
     }
@@ -422,6 +431,14 @@ Level &Level::operator=(const Level &l)
                 break;
             }
 
+            case'S':
+            {
+                char_set = new CharacterSet(i, j, "S");
+                field[i][j] = char_set;
+                index++;
+                break;
+            }
+
             default:
                 field[i][j] = new Wall(i, j, "#");
                 index++;
@@ -430,7 +447,7 @@ Level &Level::operator=(const Level &l)
             if(door1_found && switch1_found){
                 switch1->attach(door1);
                 door1_found = false;
-                switch1_found = false;
+                //switch1_found = false;
             }
         }
     }
@@ -532,6 +549,16 @@ void Level::removeCharacter(Character* c)
             break;
         }
     }
+}
+
+CharacterSet *Level::getChar_set() const
+{
+    return char_set;
+}
+
+void Level::setChar_set(CharacterSet *newChar_set)
+{
+    char_set = newChar_set;
 }
 
 void Level::setRows(int newRows)

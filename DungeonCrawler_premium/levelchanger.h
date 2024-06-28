@@ -1,6 +1,7 @@
 #ifndef LEVELCHANGER_H
 #define LEVELCHANGER_H
 #include "portal.h"
+#include "characterset.h"
 
 class Level;
 
@@ -12,19 +13,17 @@ public:
 
     std::pair<bool, Tile*> onEnter(Character* who) override;
 
-    LevelChanger* getDestination() const;
-    void setDestination(LevelChanger* newDestination);
+    CharacterSet* getDestination() const;
+    void setDestination(CharacterSet* newDestination);
 
     Level* getLevel_dest() const;
     void setLevel_dest(Level* newLevel_dest);
-
-    //void setTex_ui(const QPixmap &newTex_ui);
 
     QPixmap* getTex_ui() const override;
 
 private:
     Level* level_dest;
-    LevelChanger* destination;
+    CharacterSet* destination;
 };
 
 #endif // LEVELCHANGER_H

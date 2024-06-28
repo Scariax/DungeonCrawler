@@ -43,16 +43,32 @@ void DungeonCrawler::setGr_ui(GraphicalUI* newGr_ui)
 void DungeonCrawler::push_level_back(Level *level_n)
 {
     level_list.push_back(level_n);
+    if(level_list.second_to_last() == nullptr)
+    {
+        (level_list.begin().operator *())->getLevel_ch()->setDestination(level_n->getChar_set());
+        (level_list.begin().operator *())->getLevel_ch()->setLevel_dest(level_n);
 
-    (level_list.begin().operator *())->getLevel_ch()->setDestination(level_n->getLevel_ch());
-    (level_list.begin().operator *())->getLevel_ch()->setLevel_dest(level_n);
+        if(!(level_n->getLevel_ch() == nullptr))
+        {
+            level_n->getLevel_ch()->setDestination((level_list.begin().operator *())->getChar_set());
+            level_n->getLevel_ch()->setLevel_dest((level_list.begin().operator *()));
+        }
+    }
+    else
+    {
+        level_list.second_to_last()->getLevel_ch()->setDestination(level_n->getChar_set());
+        level_list.second_to_last()->getLevel_ch()->setLevel_dest(level_n);
 
-    level_n->getLevel_ch()->setDestination((level_list.begin().operator *())->getLevel_ch());
-    level_n->getLevel_ch()->setLevel_dest((level_list.begin().operator *()));
+        if(!(level_n->getLevel_ch() == nullptr))
+        {
+            level_n->getLevel_ch()->setDestination(level_list.begin().operator *()->getChar_set());
+            level_n->getLevel_ch()->setLevel_dest(level_list.begin().operator *());
+        }
+    }
 
     if(level_list.begin().operator *() != level_n){
         for(auto chara:level_list.begin().operator *()->getCharacters()){
-            if(chara->getTexture()=="X"){
+            if(chara->isHuman()){
                 level_n->addCharacter(chara);
             }
         }
