@@ -18,6 +18,7 @@ Dungeoncrawler Premium:
 
 *NEW* with current commit:
 - added levelload system. will autosave on exit (exit with key x). Will only load on key L press (ingame only)
+    -> will only "save" the startposition at every level
 - added "AI" enemy. (will move every 3rd move)
 
 
