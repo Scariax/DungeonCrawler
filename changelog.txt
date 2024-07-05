@@ -13,6 +13,13 @@ Dungeoncrawler Premium:
 - removed not needed classes to shorten code
 - moved more code from main.cpp into other classes for better structure
 
-*NEW* with current commit:
 - added new tile characterset -> set the destination for a character in the next level -> if levelchanger portal is in last level it teleports you to the first level -> does allow more fun level layouts
 - fixed not expected behaviour when adding more than 2 levels. (levelcount is now limited to computer resources)
+
+*NEW* with current commit:
+- added levelload system. will autosave on exit (exit with key x). Will only load on key L press (ingame only)
+- added "AI" enemy. (will move every 3rd move)
+
+
+IMPORTANT INFORMATION!!!
+If you plan to rebuild the program due to the error that the file could not be loaded, please copy the savegame.txt to the new build directory
