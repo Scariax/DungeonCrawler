@@ -62,7 +62,20 @@ int main(int argc, char* argv[])
     std::ifstream file("savegame.txt");
     if(!file)
     {
-        std::cerr << "Unable to open file" << std::endl;
+        std::ofstream file("savegame.txt");
+        file << 2 << std::endl;
+        file << 10 << std::endl;
+        file << 10 << std::endl;
+        file << l << std::endl;
+        file << 10 << std::endl;
+        file << 10 << std::endl;
+        file << l_n << std::endl;
+        file << 10 << std::endl;
+        file << 10 << std::endl;
+        file << l_2 << std::endl;
+        file << -1 << std::endl;
+        file.close();
+        std::cerr << "No File found... created basic level file. Please restart the application" << std::endl;
         return 0;
     }
         file >> level_num_tmp;
