@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
     QApplication a(argc, argv);
 
     StartScreen s;
-    s.show();
+    s.showFullScreen();
     a.exec();
 
     std::string l_tmp;
@@ -78,29 +78,29 @@ int main(int argc, char* argv[])
         std::cerr << "No File found... created basic level file. Please restart the application" << std::endl;
         return 0;
     }
-        file >> level_num_tmp;
+    file >> level_num_tmp;
+    file >> rows_tmp;
+    file >> cols_tmp;
+    file >> l_tmp;
+    MainWindow w(rows_tmp, cols_tmp, l_tmp, nullptr);
+    GraphicalUI* UI = new GraphicalUI(&w);
+    w.getDc()->setGr_ui(UI);
+    while(!file.eof())
+    {
         file >> rows_tmp;
         file >> cols_tmp;
         file >> l_tmp;
-        MainWindow w(rows_tmp, cols_tmp, l_tmp, nullptr);
-        GraphicalUI* UI = new GraphicalUI(&w);
-        w.getDc()->setGr_ui(UI);
-        while(!file.eof())
+        if(rows_tmp<=0 || cols_tmp<=0 || l_tmp=="")
         {
-            file >> rows_tmp;
-            file >> cols_tmp;
-            file >> l_tmp;
-            if(rows_tmp<=0 || cols_tmp<=0 || l_tmp=="")
-            {
-                break;
-            }
-            w.getDc()->push_level_back(new Level(rows_tmp, cols_tmp, l_tmp));
+            break;
         }
-        file.close();
+        w.getDc()->push_level_back(new Level(rows_tmp, cols_tmp, l_tmp));
+    }
+    file.close();
 
 
-        //testing for getting positions of characters (human)
-        /*std::pair<int, int> tmp;
+    //testing for getting positions of characters (human)
+    /*std::pair<int, int> tmp;
         for(auto i : w.getDc()->getCurrentLevel()->getCharacters())
         {
             if(i->isHuman())
@@ -111,9 +111,9 @@ int main(int argc, char* argv[])
         std::cout << tmp.first << " " << tmp.second << std::endl;*/
 
 
-        UI->draw();
-        w.show();
-        a.exec();
+    UI->draw();
+    w.showFullScreen();
+    a.exec();
     return 0;
 
 /*    const int rows = 10;
